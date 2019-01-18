@@ -44,9 +44,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
-                android:layout_margin="45dp"
+                android:layout_margin="30dp"
                 android:contentDescription="@string/logo"
                 app:srcCompat="@drawable/ic_logo_top" />
+
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -54,6 +55,15 @@
                 android:orientation="vertical"
                 android:layout_margin="50dp"
                 android:layout_centerInParent="true">
+
+                <TextView
+                    android:id="@+id/enter_code"
+                    android:text="@string/enter_code"
+                    android:layout_width="wrap_content"
+                    android:gravity="center"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:layout_height="wrap_content" />
+
 
 
                 <TextView
@@ -118,7 +128,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/Dont_have_an_account"
+                android:text="@string/already_have_an_account"
                 android:textColor="@color/white"
                 android:textStyle="bold" />
 
@@ -127,7 +137,7 @@
                 android:layout_height="wrap_content"
                 android:clickable="true"
                 android:onClick="signUp"
-                android:text="@string/sign_up"
+                android:text="@string/sign_in"
                 android:textColor="@color/color_orange"
                 android:textStyle="bold" />
 

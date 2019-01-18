@@ -14,7 +14,7 @@ public class ResetPin extends AppCompatActivity {
 
     }
     public void onresetSuccess(View view ){
-        Intent i = new Intent(ResetPin.this, enterCode.class);
+        Intent i = new Intent(ResetPin.this, PasswordSent.class);
         startActivity(i);
 
     }

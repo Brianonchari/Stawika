@@ -37,6 +37,7 @@
     <string name="code_title">CODE</string>
     <string name="didn_t_receive_sms">Didn\'t receive SMS?</string>
     <string name="thank_you">THANK YOU</string>
+    <string name="enter_code">Please enter code from SMS that was sent to your phone</string>
 
 
 </resources>
