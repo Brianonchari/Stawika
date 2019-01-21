@@ -27,10 +27,12 @@ public class SignUp extends AppCompatActivity {
         startActivity(intent);
     }
 
-
-
     public void launchCode(View view ){
         Intent intent = new Intent(this,enterCode.class);
+        startActivity(intent);
+    }
+    public void signIn(View view){
+        Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
     }
 }

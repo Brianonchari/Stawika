@@ -8,7 +8,7 @@
     <string name="signup_content_desc">Enter phone number first.Then we will send confirmation SMS to proceed.</string>
     <string name="forgot_pin">Forgot PIN?</string>
     <string name="Dont_have_an_account">Don\'t have an account?</string>
-    <string name="sign_up">SIGN UP</string>
+    <string name="sign_up">Sign Up</string>
     <string name="_254_hint">+254 </string>
     <string name="phone_number">PHONE NUMBER</string>
     <string name="sign_in">Sign In</string>
@@ -25,7 +25,7 @@
     <string name="your_credit_score">YOUR CREDIT SCORE</string>
     <string name="register">Complete your registration by adding additional required information below</string>
     <string name="first_name">FIRST NAME</string>
-    <string name="last_name">SECOND NAME</string>
+    <string name="last_name">LAST NAME</string>
     <string name="id">ID</string>
     <string name="dob">DOB</string>
     <string name="education_level">EDUCATION LEVEL</string>
@@ -38,6 +38,15 @@
     <string name="didn_t_receive_sms">Didn\'t receive SMS?</string>
     <string name="thank_you">THANK YOU</string>
     <string name="enter_code">Please enter code from SMS that was sent to your phone</string>
+    <string name="resend">Resend</string>
+    <string name="other_names">OTHER NAMES</string>
+    <string name="next_of_kn_phone_no">NEXT OF KN PHONE NO.</string>
+    <string name="employment">EMPLOYMENT</string>
+    <string name="marital_status">MARITAL STATUS</string>
+    <string name="income_band">INCOME BAND</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
 </resources>

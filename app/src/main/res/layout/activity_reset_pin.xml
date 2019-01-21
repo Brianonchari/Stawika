@@ -16,9 +16,10 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="@string/reset_pin"
+            android:text="@string/forgot_pin"
             android:gravity="center"
-            android:textSize="14sp"
+            android:textSize="16sp"
+            android:textStyle="bold"
             android:textColor="@color/white"/>
 
     </android.support.v7.widget.Toolbar>
@@ -55,6 +56,8 @@
 
 
 
+
+
             <TextView
                 android:id="@+id/reset_info"
                 android:layout_width="wrap_content"
@@ -64,6 +67,11 @@
                 android:layout_marginTop="55dp"
                 android:text="@string/pin_reset"
                 android:textColor="@color/blue"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="50dp"
+                android:layout_centerInParent="true">
 
             <TextView
                 android:id="@+id/email"
@@ -85,6 +93,7 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginStart="20dp"
                 android:inputType="phone"/>
+            </LinearLayout>
             <Button
                 android:id="@+id/btn_sign_in"
                 android:layout_width="253dp"

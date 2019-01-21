@@ -18,5 +18,9 @@ public class ResetPin extends AppCompatActivity {
         startActivity(i);
 
     }
+    public void signUp(View view){
+        Intent intent = new Intent(this,SignUp.class);
+        startActivity(intent);
+    }
 
 }

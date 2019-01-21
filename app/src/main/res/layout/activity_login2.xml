@@ -18,8 +18,9 @@
             android:layout_height="match_parent"
             android:gravity="center"
             android:text="@string/sign_in"
+            android:textStyle="bold"
             android:textColor="@color/white"
-            android:textSize="14sp" />
+            android:textSize="16sp" />
 
     </android.support.v7.widget.Toolbar>
 
@@ -49,6 +50,7 @@
                 app:srcCompat="@drawable/ic_logo_top" />
 
             <LinearLayout
+                android:id="@+id/top"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
@@ -77,7 +79,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/pin"
                     android:textColor="#bdc6cf"/>
-                
+
                 <android.support.design.widget.TextInputEditText
                     android:layout_margin="1dp"
                     android:layout_width="match_parent"
@@ -98,19 +100,34 @@
 
             </LinearLayout>
 
-
-
-            <CheckBox
-                android:id="@+id/checkBox"
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_above="@id/btn_sign_in"
+                android:layout_above="@+id/btn_sign_in"
                 android:layout_centerHorizontal="true"
-                android:layout_margin="10dp"
-                android:text="@string/terms"
-                android:textColor="#225683"
-                android:textSize="12sp"
-                android:textStyle="bold" />
+                android:orientation="horizontal">
+
+
+                <CheckBox
+                    android:id="@+id/checkBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@id/btn_sign_in"
+                    android:text="@string/i_agree_with"
+                    android:textColor="#bdc6cf"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/terms"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@+id/btn_sign_in"
+                    android:text="@string/terms_amp_conditions"
+                    android:textColor="@color/blue" />
+                <!--android:text="@string/terms"-->
+            </LinearLayout>
+
             <Button
                 android:id="@+id/btn_sign_in"
                 android:layout_width="253dp"
