@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
-
 import android.widget.Toast;
 
 import java.util.Calendar;
@@ -68,5 +67,9 @@ public class Registration extends AppCompatActivity {
         Intent intent = new Intent(this,LoginActivity.class);
         startActivity(intent);
 
+    }
+    public void nextStep(View view){
+        Intent intent = new Intent(this, Registration2.class);
+        startActivity(intent);
     }
 }

@@ -33,7 +33,6 @@
     <string name="secong_name">SECONG NAME</string>
     <string name="average_income">AVERAGE INCOME</string>
     <string name="other_info">OTHER INFO</string>
-
     <string name="code_title">CODE</string>
     <string name="didn_t_receive_sms">Didn\'t receive SMS?</string>
     <string name="thank_you">THANK YOU</string>
@@ -44,9 +43,8 @@
     <string name="employment">EMPLOYMENT</string>
     <string name="marital_status">MARITAL STATUS</string>
     <string name="income_band">INCOME BAND</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="save">SAVE</string>
 
 
 </resources>

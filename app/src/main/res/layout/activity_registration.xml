@@ -153,11 +153,11 @@
                     android:textStyle="bold" />
                 <Button
                     android:id="@+id/btn_sign_in"
-                    android:layout_gravity="center
-"
+                    android:layout_gravity="center"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/button_rounded_conner"
+                    android:onClick="nextStep"
                     android:text="@string/sign_up"
                     android:textColor="@color/white" />
 
