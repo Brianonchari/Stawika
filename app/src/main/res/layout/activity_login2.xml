@@ -57,34 +57,34 @@
                 android:layout_margin="50dp"
                 android:layout_centerInParent="true">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/phone_number"
-                    android:textColor="#bdc6cf"
-                    android:layout_margin="2dp"
-                    />
-
-
-                <EditText
-                    android:id="@+id/hint"
+                <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/_254"
-                    android:inputType="phone"
-                    android:text="@string/_254"
-                    android:textColor="#bdc6cf" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/pin"
-                    android:textColor="#bdc6cf"/>
+                    android:layout_height="wrap_content">
 
-                <android.support.design.widget.TextInputEditText
-                    android:layout_margin="1dp"
+                    <android.support.design.widget.TextInputEditText
+                        android:id="@+id/phone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="2dp"
+                        android:hint="@string/phone_number"
+                        android:inputType="number"
+                        android:textColor="#bdc6cf" />
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="numberPassword"/>
+                    android:layout_height="wrap_content">
+
+
+                    <android.support.design.widget.TextInputEditText
+                        android:id="@+id/pin"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/pin"
+                        android:inputType="numberPassword"
+                        android:textColor="#bdc6cf" />
+                </android.support.design.widget.TextInputLayout>
+
 
                 <TextView
                     android:layout_width="wrap_content"
