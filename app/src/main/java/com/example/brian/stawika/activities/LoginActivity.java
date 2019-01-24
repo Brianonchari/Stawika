@@ -1,4 +1,4 @@
-package com.example.brian.stawika;
+package com.example.brian.stawika.activities;
 
 
 import android.content.DialogInterface;
@@ -9,21 +9,15 @@ import android.view.View;
 import android.content.Intent;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
-import com.example.brian.stawika.Api.Api;
-import com.example.brian.stawika.Api.ApiClient;
-import com.example.brian.stawika.Model.Users;
-import com.example.brian.stawika.Model.UsersResponse;
+import com.example.brian.stawika.Api.RestApiInterface;
+import com.example.brian.stawika.Api.RestClient;
+import com.example.brian.stawika.Profile;
+import com.example.brian.stawika.R;
+import com.example.brian.stawika.ResetPin;
+import com.example.brian.stawika.SignUp;
 
-import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 import retrofit2.Retrofit;
-
-import retrofit2.converter.gson.GsonConverterFactory;
 
 
 public class LoginActivity extends AppCompatActivity implements DialogInterface.OnClickListener {
@@ -49,26 +43,14 @@ public class LoginActivity extends AppCompatActivity implements DialogInterface.
         edit.setSelection(edit.length());
 
 
-        Api api = ApiClient.getClient().create(Api.class);
-        Call<UsersResponse> call = api.createuser(API_KEY);
-        call.enqueue(new Callback<UsersResponse>() {
-            @Override
-            public void onResponse(Call<UsersResponse> call, Response<UsersResponse> response) {
-//                List<Users> users = response.body().getUsers();
-
-            }
-
-            @Override
-            public void onFailure(Call<UsersResponse> call, Throwable t) {
-
-            }
-        });
+        RestApiInterface api = RestClient.getClient().create(RestApiInterface.class);
+     ;
 
 
     }
 
     public void launchProfile(View view) {
-        Intent intent = new Intent(this,Profile.class);
+        Intent intent = new Intent(this, Profile.class);
         startActivity(intent);
     }
 
@@ -79,12 +61,12 @@ public class LoginActivity extends AppCompatActivity implements DialogInterface.
 
 
     public void launchCode(View view) {
-        Intent code = new Intent(LoginActivity.this,enterCode.class);
+        Intent code = new Intent(LoginActivity.this, EnterCodeActivity.class);
         startActivity(code);
     }
 
     public void resetPin(View view) {
-        Intent i = new Intent(LoginActivity.this,ResetPin.class);
+        Intent i = new Intent(LoginActivity.this, ResetPin.class);
         startActivity(i);
     }
 

@@ -45,6 +45,10 @@
     <string name="income_band">INCOME BAND</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="save">SAVE</string>
+    <string name="next_of_kin">NEXT OF KIN</string>
+    <string name="confirm_pin">CONFIRM PIN</string>
+    <string name="gender">GENDER</string>
+    <string name="education">EDUCATION LEVEL</string>
 
 
 </resources>

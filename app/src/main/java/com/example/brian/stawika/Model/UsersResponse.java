@@ -3,6 +3,7 @@ package com.example.brian.stawika.Model;
 import java.util.List;
 
 public class UsersResponse {
+
     private boolean error;
     public List<Users> users;
 

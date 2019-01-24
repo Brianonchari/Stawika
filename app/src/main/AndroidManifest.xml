@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.brian.stawika">
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.RECEIVE_SMS"/>
+    <uses-permission android:name="android.permission.READ_SMS" />
 
     <application
         android:allowBackup="true"
@@ -21,31 +23,44 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".enterCode" />
+        <activity android:name=".activities.EnterCodeActivity" />
         <activity android:name=".Registration" />
         <activity
             android:name=".Profile"
-            android:parentActivityName=".LoginActivity">
+            android:parentActivityName=".activities.LoginActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.brian.stawika.LoginActivity" />
+                android:value="com.example.brian.stawika.activities.LoginActivity" />
         </activity>
         <activity android:name=".ResetPin" />
-        <activity android:name=".LoginActivity">
+        <activity android:name=".activities.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".SignUp"
             android:label=" Sign Up"
-            android:parentActivityName=".LoginActivity">
+            android:parentActivityName=".activities.LoginActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.brian.stawika.LoginActivity" />
+                android:value="com.example.brian.stawika.activities.LoginActivity" />
         </activity>
+
+        <!--SMS reciever-->
+        <receiver android:name=".Receivers.SmsReceiver">
+            <intent-filter android:priority="9999">
+                <action android:name="android.provider.Telephony.SMS_RECEIVED" />
+            </intent-filter>
+        </receiver>
+
+
     </application>
+
+
+
 
 </manifest>

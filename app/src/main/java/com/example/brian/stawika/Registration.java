@@ -10,6 +10,8 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.brian.stawika.activities.LoginActivity;
+
 import java.util.Calendar;
 
 public class Registration extends AppCompatActivity {
@@ -64,7 +66,7 @@ public class Registration extends AppCompatActivity {
 
 
     public void signIn(View view){
-        Intent intent = new Intent(this,LoginActivity.class);
+        Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
 
     }

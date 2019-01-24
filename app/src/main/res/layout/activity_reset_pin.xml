@@ -7,7 +7,7 @@
     android:background="@color/blue"
     android:orientation="vertical"
     style="@style/AppTheme"
-    tools:context=".LoginActivity">
+    tools:context=".activities.LoginActivity">
 
     <android.support.v7.widget.Toolbar
         android:layout_width="match_parent"

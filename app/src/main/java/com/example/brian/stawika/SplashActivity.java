@@ -5,6 +5,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.content.Intent;
 
+import com.example.brian.stawika.activities.LoginActivity;
+
 public class SplashActivity extends AppCompatActivity {
 
     @Override
