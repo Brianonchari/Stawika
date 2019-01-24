@@ -12,10 +12,7 @@ import android.widget.EditText;
 
 import com.example.brian.stawika.Api.RestApiInterface;
 import com.example.brian.stawika.Api.RestClient;
-import com.example.brian.stawika.Profile;
 import com.example.brian.stawika.R;
-import com.example.brian.stawika.ResetPin;
-import com.example.brian.stawika.SignUp;
 
 import retrofit2.Retrofit;
 
@@ -44,18 +41,17 @@ public class LoginActivity extends AppCompatActivity implements DialogInterface.
 
 
         RestApiInterface api = RestClient.getClient().create(RestApiInterface.class);
-     ;
 
 
     }
 
     public void launchProfile(View view) {
-        Intent intent = new Intent(this, Profile.class);
+        Intent intent = new Intent(this, ProfileActivity.class);
         startActivity(intent);
     }
 
     public void signUp(View view) {
-        Intent signup = new Intent(this, SignUp.class);
+        Intent signup = new Intent(this, SignUpActivity.class);
         startActivity(signup);
     }
 
@@ -66,7 +62,7 @@ public class LoginActivity extends AppCompatActivity implements DialogInterface.
     }
 
     public void resetPin(View view) {
-        Intent i = new Intent(LoginActivity.this, ResetPin.class);
+        Intent i = new Intent(LoginActivity.this, ResetPinActivity.class);
         startActivity(i);
     }
 

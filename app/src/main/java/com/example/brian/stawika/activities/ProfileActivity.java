@@ -1,9 +1,11 @@
-package com.example.brian.stawika;
+package com.example.brian.stawika.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class Profile extends AppCompatActivity {
+import com.example.brian.stawika.R;
+
+public class ProfileActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -1,4 +1,4 @@
-package com.example.brian.stawika;
+package com.example.brian.stawika.activities;
 
 
 import android.support.v7.app.AppCompatActivity;

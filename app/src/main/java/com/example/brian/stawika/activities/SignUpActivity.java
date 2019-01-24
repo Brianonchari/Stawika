@@ -1,4 +1,4 @@
-package com.example.brian.stawika;
+package com.example.brian.stawika.activities;
 
 import android.content.Intent;
 import android.support.design.widget.TextInputEditText;
@@ -6,13 +6,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.brian.stawika.Api.RestApiInterface;
 import com.example.brian.stawika.Api.RestClient;
 import com.example.brian.stawika.Model.request.AccountCheckRequest;
 import com.example.brian.stawika.Model.response.AccountCheckResponse;
-import com.example.brian.stawika.activities.EnterCodeActivity;
-import com.example.brian.stawika.activities.LoginActivity;
+import com.example.brian.stawika.R;
 import com.google.gson.Gson;
 
 import retrofit2.Call;
@@ -20,7 +20,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 
-public class SignUp extends AppCompatActivity {
+public class SignUpActivity extends AppCompatActivity {
 
     private TextInputEditText phoneNumberEt, pinEt, confirmPinEt;
     private RestApiInterface apiService = RestClient.getClient().create(RestApiInterface.class);
@@ -80,9 +80,11 @@ public class SignUp extends AppCompatActivity {
                         Log.e("RESPONSE", new Gson().toJson(response.body()));
 
                         if(response.isSuccessful()){
-                            Intent intent = new Intent(SignUp.this, EnterCodeActivity.class);
+                            Intent intent = new Intent(SignUpActivity.this, EnterCodeActivity.class);
                             startActivity(intent);
 
+                        } else {
+                            Toast.makeText(getBaseContext(), "Try Again", Toast.LENGTH_SHORT).show();
                         }
 
                     }

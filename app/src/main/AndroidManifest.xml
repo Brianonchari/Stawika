@@ -12,10 +12,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Registration2"></activity>
-        <activity android:name=".PasswordSent" />
+        <activity android:name=".activities.Registration2Activity"></activity>
+        <activity android:name=".activities.PasswordSentActivity" />
         <activity
-            android:name=".SplashActivity"
+            android:name=".activities.SplashActivity"
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,15 +24,15 @@
             </intent-filter>
         </activity>
         <activity android:name=".activities.EnterCodeActivity" />
-        <activity android:name=".Registration" />
+        <activity android:name=".activities.RegistrationActivity" />
         <activity
-            android:name=".Profile"
+            android:name=".activities.ProfileActivity"
             android:parentActivityName=".activities.LoginActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.brian.stawika.activities.LoginActivity" />
         </activity>
-        <activity android:name=".ResetPin" />
+        <activity android:name=".activities.ResetPinActivity" />
         <activity android:name=".activities.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -42,7 +42,7 @@
         </activity>
 
         <activity
-            android:name=".SignUp"
+            android:name=".activities.SignUpActivity"
             android:label=" Sign Up"
             android:parentActivityName=".activities.LoginActivity">
             <meta-data

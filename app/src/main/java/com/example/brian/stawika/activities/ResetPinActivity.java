@@ -1,11 +1,13 @@
-package com.example.brian.stawika;
+package com.example.brian.stawika.activities;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
-public class ResetPin extends AppCompatActivity {
+import com.example.brian.stawika.R;
+
+public class ResetPinActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -14,12 +16,12 @@ public class ResetPin extends AppCompatActivity {
 
     }
     public void onresetSuccess(View view ){
-        Intent i = new Intent(ResetPin.this, PasswordSent.class);
+        Intent i = new Intent(ResetPinActivity.this, PasswordSentActivity.class);
         startActivity(i);
 
     }
     public void signUp(View view){
-        Intent intent = new Intent(this,SignUp.class);
+        Intent intent = new Intent(this, SignUpActivity.class);
         startActivity(intent);
     }
 

@@ -1,10 +1,12 @@
-package com.example.brian.stawika;
+package com.example.brian.stawika.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.AppCompatSpinner;
 
-public class Registration2 extends AppCompatActivity {
+import com.example.brian.stawika.R;
+
+public class Registration2Activity extends AppCompatActivity {
     private AppCompatSpinner spinner;
 
     @Override

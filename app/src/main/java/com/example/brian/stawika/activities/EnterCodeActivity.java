@@ -8,13 +8,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Toast;
 
 import com.example.brian.stawika.R;
-import com.example.brian.stawika.Receivers.SmsListener;
-import com.example.brian.stawika.Receivers.SmsReceiver;
-import com.example.brian.stawika.Registration;
-import com.example.brian.stawika.SignUp;
 
 
 public class EnterCodeActivity extends AppCompatActivity {
@@ -42,11 +37,11 @@ public class EnterCodeActivity extends AppCompatActivity {
     }
 
     public void registrationForm(View view){
-        Intent intent = new Intent(this, Registration.class);
+        Intent intent = new Intent(this, RegistrationActivity.class);
         startActivity(intent);
     }
     public void  signUp(View view){
-        Intent intent = new Intent(this, SignUp.class);
+        Intent intent = new Intent(this, SignUpActivity.class);
         startActivity(intent);
     }
 }

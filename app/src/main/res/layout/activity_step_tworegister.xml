@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@color/blue"
     android:orientation="vertical"
-    tools:context=".Registration">
+    tools:context=".activities.RegistrationActivity">
 
     <android.support.v7.widget.Toolbar
         android:layout_width="match_parent"
@@ -59,77 +59,93 @@
                         android:layout_below="@+id/register"
                         android:orientation="vertical">
 
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/education" />
+
+                        <android.support.v7.widget.AppCompatSpinner
+                            style="@style/Base.Widget.AppCompat.Spinner.Underlined"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/employment" />
+
+                        <android.support.v7.widget.AppCompatSpinner
+                            style="@style/Base.Widget.AppCompat.Spinner.Underlined"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/average_income" />
+
+                        <android.support.v7.widget.AppCompatSpinner
+                            android:layout_width="match_parent"
+                            style="@style/Base.Widget.AppCompat.Spinner.Underlined"
+                            android:layout_height="match_parent" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/education" />
+
+                        <android.support.v7.widget.AppCompatSpinner
+                            style="@style/Base.Widget.AppCompat.Spinner.Underlined"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/rental" />
+
+                        <android.support.v7.widget.AppCompatSpinner
+                            android:layout_width="match_parent"
+                            style="@style/Base.Widget.AppCompat.Spinner.Underlined"
+                            android:layout_height="match_parent" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/marital_status" />
+
+                        <android.support.v7.widget.AppCompatSpinner
+                            style="@style/Base.Widget.AppCompat.Spinner.Underlined"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+
+
                         <android.support.design.widget.TextInputLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content">
-                            <android.support.v7.widget.AppCompatSpinner
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content">
 
-                            </android.support.v7.widget.AppCompatSpinner>
-                        </android.support.design.widget.TextInputLayout>
 
-                        <android.support.design.widget.TextInputLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
                             <android.support.design.widget.TextInputEditText
-                                android:id="@+id/employment"
+                                android:id="@+id/pin"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:inputType="text"
-                                android:hint="@string/employment"
-                                />
-
-
-
+                                android:hint="@string/next_of_kin"
+                                android:inputType="numberPassword"
+                                android:textColor="#bdc6cf" />
                         </android.support.design.widget.TextInputLayout>
-
-
                         <android.support.design.widget.TextInputLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content">
+
+
                             <android.support.design.widget.TextInputEditText
-                                android:id="@+id/income_band"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:hint="@string/income_band"/>
+                                android:hint="@string/next_of_kn_phone_no"
+                                android:inputType="numberPassword"
+                                android:textColor="#bdc6cf" />
                         </android.support.design.widget.TextInputLayout>
-
-
-                        <android.support.design.widget.TextInputLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
-                           <android.support.v7.widget.AppCompatSpinner
-                               android:id="@+id/gender"
-                               android:layout_width="match_parent"
-                               android:layout_height="wrap_content">
-
-                           </android.support.v7.widget.AppCompatSpinner>
-                        </android.support.design.widget.TextInputLayout>
-
-
-
-                        <android.support.design.widget.TextInputLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
-                            <android.support.design.widget.TextInputEditText
-                                android:id="@+id/next_of__kin"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:hint="@string/next_of_kin"/>
-                        </android.support.design.widget.TextInputLayout>
-
-
-                        <android.support.design.widget.TextInputLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
-                            <android.support.design.widget.TextInputEditText
-                                android:id="@+id/next_of__kin_no"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:hint="@string/next_of_kn_phone_no"/>
-                        </android.support.design.widget.TextInputLayout>
-
 
 
                         <CheckBox
