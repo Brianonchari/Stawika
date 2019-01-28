@@ -70,4 +70,40 @@ public class Users {
     public String getEmail() {
         return email;
     }
+
+    public void setIdNumber(int idNumber) {
+        this.idNumber = idNumber;
+    }
+
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+
+    public void setOthername(String othername) {
+        this.othername = othername;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public void setNextKinfullname(String nextKinfullname) {
+        this.nextKinfullname = nextKinfullname;
+    }
+
+    public void setNextOfKinphone(String nextOfKinphone) {
+        this.nextOfKinphone = nextOfKinphone;
+    }
+
+    public void setSmsCode(String smsCode) {
+        this.smsCode = smsCode;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 }

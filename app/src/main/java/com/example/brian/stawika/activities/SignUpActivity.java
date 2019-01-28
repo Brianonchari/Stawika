@@ -64,8 +64,6 @@ public class SignUpActivity extends AppCompatActivity {
 
                 }
 
-
-
                 AccountCheckRequest accountCheckRequest = new AccountCheckRequest();
                 accountCheckRequest.setPassword(pinEt.getText().toString());
                 accountCheckRequest.setPhoneNumber(phoneNumberEt.getText().toString());
@@ -77,10 +75,12 @@ public class SignUpActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(Call<AccountCheckResponse> call, Response<AccountCheckResponse> response) {
 
-                        Log.e("RESPONSE", new Gson().toJson(response.body()));
+
+
 
                         if(response.isSuccessful()){
                             Intent intent = new Intent(SignUpActivity.this, EnterCodeActivity.class);
+                            intent.putExtra("token", response.body().getToken());
                             startActivity(intent);
 
                         } else {
@@ -97,6 +97,8 @@ public class SignUpActivity extends AppCompatActivity {
 
             }
         });
+
+
 
     }
 

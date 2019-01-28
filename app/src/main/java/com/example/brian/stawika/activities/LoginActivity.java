@@ -23,25 +23,19 @@ public class LoginActivity extends AppCompatActivity implements DialogInterface.
     private static Retrofit retrofit = null;
     private EditText edit;
 
-    private final String API_KEY = "/api/register/register-user" ;
+    private final String API_KEY = "/api/register/register-user";
     public static final String BASE_URL = "https://api-test.stawika.com";
-
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login2);
-        Log.d("LoginActivity","");
+        Log.d("LoginActivity", "");
 
-//        set cursor position
         edit = findViewById(R.id.phone);
         edit.requestFocus();
         edit.setSelection(edit.length());
-
-
-        RestApiInterface api = RestClient.getClient().create(RestApiInterface.class);
-
 
     }
 

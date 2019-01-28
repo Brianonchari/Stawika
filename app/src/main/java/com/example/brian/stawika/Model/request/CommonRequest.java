@@ -35,10 +35,15 @@ public class CommonRequest {
     }
 
     public String getSimSerial() {
+
         return simSerial;
     }
 
     public void setSimSerial(String simSerial) {
         this.simSerial = simSerial;
     }
+
+
+
+
 }
