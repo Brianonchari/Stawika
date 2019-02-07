@@ -22,7 +22,9 @@ import com.google.gson.Gson;
 
 import java.util.List;
 
-public class RegistrationActivity extends AppCompatActivity {
+public class
+
+RegistrationActivity extends AppCompatActivity {
 
     private TextInputEditText firstnameEt, lastnameEt, othernamesEt, IDEt, emailEt, DOBEt;
     private RestApiInterface apiService = RestClient.getClient().create(RestApiInterface.class);

@@ -15,7 +15,7 @@
         <activity android:name=".activities.Registration2Activity"></activity>
         <activity android:name=".activities.PasswordSentActivity" />
         <activity
-            android:name=".activities.SplashActivity"
+            android:name=".activities.RegistrationActivity"
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,7 +24,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".activities.EnterCodeActivity" />
-        <activity android:name=".activities.RegistrationActivity" />
+        <!--<activity android:name=".activities.RegistrationActivity" />-->
         <activity
             android:name=".activities.ProfileActivity"
             android:parentActivityName=".activities.LoginActivity">

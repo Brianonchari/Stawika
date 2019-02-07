@@ -3,11 +3,8 @@ package com.example.brian.stawika.Receivers;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.content.ReceiverCallNotAllowedException;
-import android.nfc.Tag;
 import android.os.Build;
 import android.os.Bundle;
-import android.provider.SyncStateContract;
 import android.telephony.SmsMessage;
 import android.util.Log;
 

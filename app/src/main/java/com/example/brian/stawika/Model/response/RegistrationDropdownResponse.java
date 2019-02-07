@@ -7,6 +7,7 @@ public class RegistrationDropdownResponse {
     private List<IncomeBand> income;
     private List<EducationLevel> education;
     private List<Rental> rental;
+    private List<EmploymentLevel> employment;
 
     public List<MaritalStatus> getMarital() {
         return marital;
@@ -22,5 +23,9 @@ public class RegistrationDropdownResponse {
 
     public List<Rental> getRental() {
         return rental;
+    }
+
+    public List<EmploymentLevel> getEmployment() {
+        return employment;
     }
 }

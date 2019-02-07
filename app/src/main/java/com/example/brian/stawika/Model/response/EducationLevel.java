@@ -1,6 +1,6 @@
 package com.example.brian.stawika.Model.response;
 
-class EducationLevel {
+public class EducationLevel {
 
     private int id;
     private String educationLevel;

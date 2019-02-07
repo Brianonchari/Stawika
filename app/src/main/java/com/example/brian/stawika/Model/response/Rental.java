@@ -1,6 +1,6 @@
 package com.example.brian.stawika.Model.response;
 
-class Rental {
+public class Rental {
 
     private int rentalId;
     private String name;

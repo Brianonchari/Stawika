@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     style="@style/AppTheme"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -65,34 +64,42 @@
                             android:layout_height="wrap_content"
                             android:text="@string/education" />
 
-                        <android.support.v7.widget.AppCompatSpinner
-                            android:id="@+id/education_level"
-                            style="@style/Base.Widget.AppCompat.Spinner.Underlined"
+                        <Spinner
+                            android:id="@+id/educationLevel"
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent" />
+                            android:layout_height="45dp"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"
+                            android:layout_marginTop="10dp"
+                            android:spinnerMode="dropdown"/>
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/employment" />
 
-                        <android.support.v7.widget.AppCompatSpinner
-                            style="@style/Base.Widget.AppCompat.Spinner.Underlined"
-                            android:id="@+id/employment"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent" />
 
+                        <Spinner
+                            android:id="@+id/spCompany"
+                            android:layout_width="match_parent"
+                            android:layout_height="45dp"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"
+                            android:layout_marginTop="10dp"
+                            android:spinnerMode="dropdown"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/average_income" />
 
-                        <android.support.v7.widget.AppCompatSpinner
-                            android:id="@+id/avg_income"
+                        <Spinner
+                            android:id="@+id/averageIncome"
                             android:layout_width="match_parent"
-                            style="@style/Base.Widget.AppCompat.Spinner.Underlined"
-                            android:layout_height="match_parent" />
-
+                            android:layout_height="45dp"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"
+                            android:layout_marginTop="10dp"
+                            android:spinnerMode="dropdown"/>
 
 
                         <TextView
@@ -100,23 +107,27 @@
                             android:layout_height="wrap_content"
                             android:text="@string/rental" />
 
-                        <android.support.v7.widget.AppCompatSpinner
+                        <Spinner
                             android:id="@+id/rental"
                             android:layout_width="match_parent"
-                            style="@style/Base.Widget.AppCompat.Spinner.Underlined"
-                            android:layout_height="match_parent" />
-
+                            android:layout_height="45dp"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"
+                            android:layout_marginTop="10dp"
+                            android:spinnerMode="dropdown"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/marital_status" />
 
-                        <android.support.v7.widget.AppCompatSpinner
-                            style="@style/Base.Widget.AppCompat.Spinner.Underlined"
-                            android:id="@+id/marital_status"
+                        <Spinner
+                            android:id="@+id/maritalStatus"
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent" />
-
+                            android:layout_height="45dp"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"
+                            android:layout_marginTop="10dp"
+                            android:spinnerMode="dropdown"/>
 
                         <android.support.design.widget.TextInputLayout
                             android:layout_width="match_parent"
@@ -128,7 +139,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:hint="@string/next_of_kin"
-                                android:inputType="numberPassword"
+                                android:inputType="text"
                                 android:textColor="#bdc6cf" />
                         </android.support.design.widget.TextInputLayout>
 
@@ -141,7 +152,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:hint="@string/next_of_kn_phone_no"
-                                android:inputType="numberPassword"
+                                android:inputType="phone"
                                 android:textColor="#bdc6cf" />
                         </android.support.design.widget.TextInputLayout>
 

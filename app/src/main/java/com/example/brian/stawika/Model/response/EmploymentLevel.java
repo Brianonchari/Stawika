@@ -1,12 +1,12 @@
 package com.example.brian.stawika.Model.response;
 
-public class MaritalStatus {
+public class EmploymentLevel {
 
-    private  int statusId;
+    private int empId;
     private String name;
 
-    public int getStatusId() {
-        return statusId;
+    public int getEmpId() {
+        return empId;
     }
 
     public String getName() {

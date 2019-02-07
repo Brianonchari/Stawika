@@ -26,5 +26,4 @@ public interface RestApiInterface {
 
     @POST("/api/register/registrations-dropdowns")
     Call<RegistrationDropdownResponse> dropDownresponse (@Body CommonRequest commonRequest);
-
 }

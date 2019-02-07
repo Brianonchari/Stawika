@@ -1,6 +1,6 @@
 package com.example.brian.stawika.Model.response;
 
-class IncomeBand {
+public class IncomeBand {
     private int id,lowerBand,higherBand;
 
     public int getId() {
@@ -14,4 +14,6 @@ class IncomeBand {
     public int getHigherBand() {
         return higherBand;
     }
+
+
 }
