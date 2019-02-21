@@ -49,13 +49,12 @@
                 app:srcCompat="@drawable/ic_logo_top" />
 
 
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
+                android:layout_centerInParent="true"
                 android:layout_margin="50dp"
-                android:layout_centerInParent="true">
+                android:orientation="vertical">
 
 
                 <android.support.design.widget.TextInputLayout
@@ -64,13 +63,12 @@
 
                     <android.support.design.widget.TextInputEditText
                         android:id="@+id/phone"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="#bdc6cf"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="2dp"
                         android:hint="@string/phone_number"
                         android:inputType="number"
-                    android:layout_margin="2dp"
-                    />
+                        android:textColor="#bdc6cf" />
                 </android.support.design.widget.TextInputLayout>
 
                 <android.support.design.widget.TextInputLayout
@@ -100,7 +98,6 @@
                         android:inputType="numberPassword"
                         android:textColor="#bdc6cf" />
                 </android.support.design.widget.TextInputLayout>
-
 
 
             </LinearLayout>

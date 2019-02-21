@@ -2,16 +2,14 @@ package com.example.brian.stawika.activities;
 
 
 import android.content.DialogInterface;
-import android.support.v7.app.AppCompatActivity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.content.Intent;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.example.brian.stawika.Api.RestApiInterface;
-import com.example.brian.stawika.Api.RestClient;
 import com.example.brian.stawika.R;
 
 import retrofit2.Retrofit;
@@ -23,8 +21,8 @@ public class LoginActivity extends AppCompatActivity implements DialogInterface.
     private static Retrofit retrofit = null;
     private EditText edit;
 
-    private final String API_KEY = "/api/register/register-user";
-    public static final String BASE_URL = "https://api-test.stawika.com";
+//    private final String API_KEY = "/api/register/register-user";
+//    public static final String BASE_URL = "https://api-test.stawika.com";
 
 
     @Override
@@ -40,7 +38,7 @@ public class LoginActivity extends AppCompatActivity implements DialogInterface.
     }
 
     public void launchProfile(View view) {
-        Intent intent = new Intent(this, ProfileActivity.class);
+        Intent intent = new Intent(this, WelcomeActivity.class);
         startActivity(intent);
     }
 
@@ -63,5 +61,8 @@ public class LoginActivity extends AppCompatActivity implements DialogInterface.
     @Override
     public void onClick(DialogInterface dialog, int which) {
 
+    }
+
+    public void profile(View view) {
     }
 }

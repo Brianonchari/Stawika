@@ -21,7 +21,6 @@
     <string name="code">Please enter code from the SMS that we sent to your phone</string>
     <string name="code1">CODE</string>
     <string name="reset_pin">RESET PIN</string>
-    <string name="profile">Profile</string>
     <string name="your_credit_score">YOUR CREDIT SCORE</string>
     <string name="register">Complete your registration by adding additional required information below</string>
     <string name="first_name">FIRST NAME</string>
@@ -50,4 +49,28 @@
     <string name="education">EDUCATION LEVEL</string>
     <string name="rental">RENTAL</string>
     <string name="marital_status">MARITAL STATUS</string>
+    <string name="welcome">WELCOME</string>
+    <string name="your_loan_balance">YOUR LOAN BALANCE :</string>
+    <string name="_2_050">2,050</string>
+    <string name="repay">REPAY</string>
+    <string name="your_wallet_balance">YOUR WALLET BALANCE</string>
+    <string name="kes">KES</string>
+    <string name="start_lend">START LEND</string>
+    <string name="repayment_schedule">REPAYMENT SCHEDULE:</string>
+    <string name="due_date">DUE DATE</string>
+    <string name="installment">INSTALLMENT</string>
+    <string name="balance">BALANCE</string>
+    <string name="jun_7_n_thursday">Jun 7\nThursday</string>
+    <string name="_650_kes">650 KES</string>
+    <string name="overview">Overview</string>
+    <string name="borrowers">Borrowers</string>
+    <string name="profile">Profile</string>
+    <string name="_599">599</string>
+    <string name="full_name">Full Name</string>
+    <string name="_254726100423">+254726100423</string>
+    <string name="high_school_name">HIGH SCHOOL NAME</string>
+    <string name="single">Single</string>
+    <string name="edit_profile">Edit Profile</string>
+
+
 </resources>

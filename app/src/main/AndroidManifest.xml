@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.brian.stawika">
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.RECEIVE_SMS"/>
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
     <uses-permission android:name="android.permission.READ_SMS" />
 
     <application
@@ -12,21 +13,22 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.Registration2Activity"></activity>
+        <activity android:name=".activities.EditProfileActivity"></activity>
+        <activity android:name=".activities.ProfileActivity" />
+        <activity android:name=".activities.Registration2Activity">
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.MAIN" />-->
+
+                <!--<category android:name="android.intent.category.LAUNCHER" />-->
+            <!--</intent-filter>-->
+        </activity>
         <activity android:name=".activities.PasswordSentActivity" />
         <activity
             android:name=".activities.RegistrationActivity"
-            android:theme="@style/SplashTheme">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".activities.EnterCodeActivity" />
-        <!--<activity android:name=".activities.RegistrationActivity" />-->
+            android:theme="@style/SplashTheme" />
+        <activity android:name=".activities.EnterCodeActivity" /> <!-- <activity android:name=".activities.RegistrationActivity" /> -->
         <activity
-            android:name=".activities.ProfileActivity"
+            android:name=".activities.WelcomeActivity"
             android:parentActivityName=".activities.LoginActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -35,12 +37,11 @@
         <activity android:name=".activities.ResetPinActivity" />
         <activity android:name=".activities.LoginActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
+            <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".activities.SignUpActivity"
             android:label=" Sign Up"
@@ -48,19 +49,12 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.brian.stawika.activities.LoginActivity" />
-        </activity>
-
-        <!--SMS reciever-->
+        </activity> <!-- SMS reciever -->
         <receiver android:name=".Receivers.SmsReceiver">
             <intent-filter android:priority="9999">
                 <action android:name="android.provider.Telephony.SMS_RECEIVED" />
             </intent-filter>
         </receiver>
-
-
     </application>
-
-
-
 
 </manifest>

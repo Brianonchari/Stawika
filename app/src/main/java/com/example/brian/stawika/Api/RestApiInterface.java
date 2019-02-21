@@ -8,10 +8,11 @@ import com.example.brian.stawika.Model.response.AccountCheckResponse;
 import com.example.brian.stawika.Model.response.RegistrationDropdownResponse;
 import com.example.brian.stawika.Model.response.RegisterUserResponse;
 import com.example.brian.stawika.Model.response.SmsVerificationResponse;
+
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.POST;
-
 
 public interface RestApiInterface {
 
@@ -26,4 +27,9 @@ public interface RestApiInterface {
 
     @POST("/api/register/registrations-dropdowns")
     Call<RegistrationDropdownResponse> dropDownresponse (@Body CommonRequest commonRequest);
+
+    @POST("createuser")
+        Call<ResponseBody> registerUser(
+
+    );
 }
