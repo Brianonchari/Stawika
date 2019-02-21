@@ -1,5 +1,6 @@
 package com.example.brian.stawika.activities;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
@@ -8,11 +9,11 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import com.example.brian.stawika.R;
 import com.example.brian.stawika.api.RestApiInterface;
 import com.example.brian.stawika.api.RestClient;
 import com.example.brian.stawika.model.request.AccountCheckRequest;
 import com.example.brian.stawika.model.response.AccountCheckResponse;
-import com.example.brian.stawika.R;
 import com.google.gson.Gson;
 
 import retrofit2.Call;
@@ -23,6 +24,7 @@ import retrofit2.Response;
 public class SignUpActivity extends AppCompatActivity {
 
     private TextInputEditText phoneNumberEt, pinEt, confirmPinEt;
+    ProgressDialog progress;
     private RestApiInterface apiService = RestClient.getClient().create(RestApiInterface.class);
 
     @Override
@@ -76,6 +78,30 @@ public class SignUpActivity extends AppCompatActivity {
                     public void onResponse(Call<AccountCheckResponse> call, Response<AccountCheckResponse> response) {
 
                         if (response.isSuccessful()) {
+                            progress = new ProgressDialog(SignUpActivity.this);
+                            progress.setMessage("Sign Up");
+                            progress.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+                            progress.setProgress(0);
+                            progress.show();
+
+                            final int totalProgressTime = 100;
+                            final Thread t = new Thread() {
+                                @Override
+                                public void run() {
+                                    int jumpTime = 0;
+
+                                    while (jumpTime < totalProgressTime) {
+                                        try {
+                                            sleep(2000);
+                                            jumpTime += 1;
+                                            progress.setProgress(jumpTime);
+                                        } catch (InterruptedException e) {
+                                            e.printStackTrace();
+                                        }
+                                    }
+                                }
+                            };
+                            t.start();
                             Intent intent = new Intent(SignUpActivity.this, EnterCodeActivity.class);
                             intent.putExtra("token", response.body().getToken());
                             startActivity(intent);
@@ -94,12 +120,6 @@ public class SignUpActivity extends AppCompatActivity {
 
             }
         });
-
-
-    }
-
-
-    private void createUser() {
 
 
     }

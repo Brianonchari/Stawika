@@ -1,6 +1,7 @@
 package com.example.brian.stawika.activities;
 
 
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,11 +9,12 @@ import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.brian.stawika.R;
 import com.example.brian.stawika.api.RestApiInterface;
 import com.example.brian.stawika.api.RestClient;
-import com.example.brian.stawika.R;
 
 import java.util.Map;
 
@@ -26,6 +28,8 @@ public class LoginActivity extends AppCompatActivity implements DialogInterface.
 
 
     private TextInputEditText phoneEt, pinEt;
+    private Button btnSignIn;
+    private ProgressDialog progress;
     private RestApiInterface apiService = RestClient.getClient().create(RestApiInterface.class);
 
     @Override
@@ -34,12 +38,13 @@ public class LoginActivity extends AppCompatActivity implements DialogInterface.
         setContentView(R.layout.activity_login2);
         Log.d("LoginActivity", "");
 
+
         phoneEt = findViewById(R.id.phone);
         pinEt = findViewById(R.id.pinEt);
-
         findViewById(R.id.btnSignIn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 final String phoneNumber = phoneEt.getText().toString();
                 final String password = pinEt.getText().toString();
 
@@ -63,8 +68,35 @@ public class LoginActivity extends AppCompatActivity implements DialogInterface.
                     @Override
                     public void onResponse(Call<Map<String, Object>> call, Response<Map<String, Object>> response) {
                         if (response.isSuccessful()) {
+                            progress = new ProgressDialog(LoginActivity.this);
+                            progress.setMessage("Log In");
+                            progress.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+                            progress.setIndeterminate(true);
+                            progress.setProgress(0);
+                            progress.show();
+
+                            final int totalProgressTime = 100;
+                            final Thread t = new Thread() {
+                                @Override
+                                public void run() {
+                                    int jumpTime = 1;
+
+                                    while (jumpTime < totalProgressTime) {
+                                        try {
+                                            sleep(20000);
+                                            jumpTime += 1;
+                                            progress.setProgress(jumpTime);
+                                        } catch (InterruptedException e) {
+                                            e.printStackTrace();
+                                        }
+                                    }
+                                }
+                            };
+                            t.start();
                             Intent intent = new Intent(LoginActivity.this, WelcomeActivity.class);
                             startActivity(intent);
+
+
                         } else {
                             Log.e("LogIn", String.valueOf(response));
                             Toast.makeText(getBaseContext(), "Check Your details", Toast.LENGTH_SHORT).show();
@@ -100,4 +132,6 @@ public class LoginActivity extends AppCompatActivity implements DialogInterface.
     public void onClick(DialogInterface dialog, int which) {
 
     }
+
+
 }
