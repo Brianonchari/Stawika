@@ -4,26 +4,29 @@ package com.example.brian.stawika.activities;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
+import android.widget.Toast;
 
+import com.example.brian.stawika.api.RestApiInterface;
+import com.example.brian.stawika.api.RestClient;
 import com.example.brian.stawika.R;
 
-import retrofit2.Retrofit;
+import java.util.Map;
+
+import okhttp3.Credentials;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 public class LoginActivity extends AppCompatActivity implements DialogInterface.OnClickListener {
 
-    private Button mButton;
-    private static Retrofit retrofit = null;
-    private EditText edit;
 
-//    private final String API_KEY = "/api/register/register-user";
-//    public static final String BASE_URL = "https://api-test.stawika.com";
-
+    private TextInputEditText phoneEt, pinEt;
+    private RestApiInterface apiService = RestClient.getClient().create(RestApiInterface.class);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,22 +34,57 @@ public class LoginActivity extends AppCompatActivity implements DialogInterface.
         setContentView(R.layout.activity_login2);
         Log.d("LoginActivity", "");
 
-        edit = findViewById(R.id.phone);
-        edit.requestFocus();
-        edit.setSelection(edit.length());
+        phoneEt = findViewById(R.id.phone);
+        pinEt = findViewById(R.id.pinEt);
 
+        findViewById(R.id.btnSignIn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final String phoneNumber = phoneEt.getText().toString();
+                final String password = pinEt.getText().toString();
+
+
+                if (phoneNumber.isEmpty()) {
+                    phoneEt.setError("Phone number is required");
+                    phoneEt.requestFocus();
+                    return;
+                }
+
+                if (password.isEmpty()) {
+                    pinEt.setError("Password can not be empty");
+                    pinEt.requestFocus();
+                    return;
+                }
+
+                final String authorization = Credentials.basic("android-app", "secret");
+
+                Call<Map<String, Object>> call = apiService.authenticate(authorization, "password", phoneEt.getText().toString(), pinEt.getText().toString());
+                call.enqueue(new Callback<Map<String, Object>>() {
+                    @Override
+                    public void onResponse(Call<Map<String, Object>> call, Response<Map<String, Object>> response) {
+                        if (response.isSuccessful()) {
+                            Intent intent = new Intent(LoginActivity.this, WelcomeActivity.class);
+                            startActivity(intent);
+                        } else {
+                            Log.e("LogIn", String.valueOf(response));
+                            Toast.makeText(getBaseContext(), "Check Your details", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<Map<String, Object>> call, Throwable t) {
+
+                    }
+                });
+            }
+        });
     }
 
-    public void launchProfile(View view) {
-        Intent intent = new Intent(this, WelcomeActivity.class);
-        startActivity(intent);
-    }
 
     public void signUp(View view) {
         Intent signup = new Intent(this, SignUpActivity.class);
         startActivity(signup);
     }
-
 
     public void launchCode(View view) {
         Intent code = new Intent(LoginActivity.this, EnterCodeActivity.class);
@@ -61,8 +99,5 @@ public class LoginActivity extends AppCompatActivity implements DialogInterface.
     @Override
     public void onClick(DialogInterface dialog, int which) {
 
-    }
-
-    public void profile(View view) {
     }
 }

@@ -1,8 +1,8 @@
-package com.example.brian.stawika.Model.request;
+package com.example.brian.stawika.model.request;
 
 public class RegisterUserRequest {
 
-    String firstName,lastName,otherName,gender,idNumber,email,dob,smsCode,nextKinFullname,nextKinPhone;
+    String firstName, lastName, otherName, gender, idNumber, email, dob, smsCode, nextKinFullname, nextKinPhone;
     private CommonRequest commonRequest;
 
     public RegisterUserRequest() {

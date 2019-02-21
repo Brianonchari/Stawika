@@ -1,6 +1,4 @@
-package com.example.brian.stawika.Model;
-
-
+package com.example.brian.stawika.model;
 
 
 public class SpinnerArrayObject {

@@ -1,4 +1,4 @@
-package com.example.brian.stawika.Model.response;
+package com.example.brian.stawika.model.response;
 
 public class Rental {
 

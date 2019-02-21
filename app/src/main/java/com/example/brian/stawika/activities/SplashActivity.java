@@ -1,11 +1,9 @@
 package com.example.brian.stawika.activities;
 
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.content.Intent;
-
-import com.example.brian.stawika.activities.LoginActivity;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -16,9 +14,6 @@ public class SplashActivity extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
-
-
-
 
 
 }

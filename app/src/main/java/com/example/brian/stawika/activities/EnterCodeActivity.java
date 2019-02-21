@@ -4,17 +4,17 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
-import com.example.brian.stawika.Api.RestApiInterface;
-import com.example.brian.stawika.Api.RestClient;
-import com.example.brian.stawika.Model.request.SmsVerificationRequest;
-import com.example.brian.stawika.Model.response.SmsVerificationResponse;
+import com.example.brian.stawika.api.RestApiInterface;
+import com.example.brian.stawika.api.RestClient;
+import com.example.brian.stawika.model.request.SmsVerificationRequest;
+import com.example.brian.stawika.model.response.SmsVerificationResponse;
 import com.example.brian.stawika.R;
 import com.google.gson.Gson;
 
@@ -26,9 +26,6 @@ import retrofit2.Response;
 public class EnterCodeActivity extends AppCompatActivity {
 
     private TextInputEditText enterCodeEt;
-    private String token;
-
-
     BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
@@ -39,6 +36,7 @@ public class EnterCodeActivity extends AppCompatActivity {
             enterCodeEt.setText(code);
         }
     };
+    private String token;
     private RestApiInterface apiService = RestClient.getClient().create(RestApiInterface.class);
 
     @Override
@@ -99,8 +97,6 @@ public class EnterCodeActivity extends AppCompatActivity {
     }
 
 
-
-
     @Override
     protected void onDestroy() {
         super.onDestroy();
@@ -119,11 +115,12 @@ public class EnterCodeActivity extends AppCompatActivity {
     }
 
 
-    public void registrationForm(View view){
+    public void registrationForm(View view) {
         Intent intent = new Intent(this, RegistrationActivity.class);
         startActivity(intent);
     }
-    public void  signUp(View view){
+
+    public void signUp(View view) {
         Intent intent = new Intent(this, SignUpActivity.class);
         startActivity(intent);
     }

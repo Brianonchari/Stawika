@@ -1,9 +1,9 @@
-package com.example.brian.stawika.Model.request;
+package com.example.brian.stawika.model.request;
 
 public class RegistrationDropdownsRequest {
 
-    private String nextOfkinFullname,EducationLevel,EmploymentLevel,NextOfkinPhone,
-            AverageIncome,Rental,MaritalStatus,firstName,gender,otherName,lastName,smsCode,email,idNumber,dob;
+    private String nextOfkinFullname, EducationLevel, EmploymentLevel, NextOfkinPhone,
+            AverageIncome, Rental, MaritalStatus, firstName, gender, otherName, lastName, smsCode, email, idNumber, dob;
 
     private CommonRequest commonRequest;
 

@@ -1,4 +1,4 @@
-package com.example.brian.stawika.Model.request;
+package com.example.brian.stawika.model.request;
 
 public class CommonRequest {
 
@@ -42,8 +42,6 @@ public class CommonRequest {
     public void setSimSerial(String simSerial) {
         this.simSerial = simSerial;
     }
-
-
 
 
 }

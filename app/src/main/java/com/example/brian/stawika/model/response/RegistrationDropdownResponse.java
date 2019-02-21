@@ -1,4 +1,5 @@
-package com.example.brian.stawika.Model.response;
+package com.example.brian.stawika.model.response;
+
 import java.util.List;
 
 public class RegistrationDropdownResponse {

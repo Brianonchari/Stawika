@@ -17,9 +17,9 @@
         <activity android:name=".activities.ProfileActivity" />
         <activity android:name=".activities.Registration2Activity">
             <!--<intent-filter>-->
-                <!--<action android:name="android.intent.action.MAIN" />-->
+            <!--<action android:name="android.intent.action.MAIN" />-->
 
-                <!--<category android:name="android.intent.category.LAUNCHER" />-->
+            <!--<category android:name="android.intent.category.LAUNCHER" />-->
             <!--</intent-filter>-->
         </activity>
         <activity android:name=".activities.PasswordSentActivity" />
@@ -37,9 +37,9 @@
         <activity android:name=".activities.ResetPinActivity" />
         <activity android:name=".activities.LoginActivity">
             <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MAIN" />
 
-            <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
@@ -50,7 +50,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.brian.stawika.activities.LoginActivity" />
         </activity> <!-- SMS reciever -->
-        <receiver android:name=".Receivers.SmsReceiver">
+        <receiver android:name=".receivers.SmsReceiver">
             <intent-filter android:priority="9999">
                 <action android:name="android.provider.Telephony.SMS_RECEIVED" />
             </intent-filter>

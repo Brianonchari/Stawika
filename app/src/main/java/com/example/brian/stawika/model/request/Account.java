@@ -1,4 +1,4 @@
-package com.example.brian.stawika.Model.request;
+package com.example.brian.stawika.model.request;
 
 public class Account {
 

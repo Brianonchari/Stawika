@@ -1,26 +1,23 @@
 package com.example.brian.stawika.activities;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
-import com.example.brian.stawika.Api.RestApiInterface;
-import com.example.brian.stawika.Api.RestClient;
-import com.example.brian.stawika.Model.request.CommonRequest;
-import com.example.brian.stawika.Model.response.RegistrationDropdownResponse;
+import com.example.brian.stawika.api.RestApiInterface;
+import com.example.brian.stawika.api.RestClient;
+import com.example.brian.stawika.model.request.CommonRequest;
+import com.example.brian.stawika.model.response.RegistrationDropdownResponse;
 import com.example.brian.stawika.R;
 import com.google.gson.Gson;
 
-import java.util.List;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class
 

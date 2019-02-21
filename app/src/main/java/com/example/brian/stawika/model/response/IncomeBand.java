@@ -1,7 +1,7 @@
-package com.example.brian.stawika.Model.response;
+package com.example.brian.stawika.model.response;
 
 public class IncomeBand {
-    private int id,lowerBand,higherBand;
+    private int id, lowerBand, higherBand;
 
     public int getId() {
         return id;

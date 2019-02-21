@@ -1,4 +1,4 @@
-package com.example.brian.stawika.Receivers;
+package com.example.brian.stawika.receivers;
 
 public interface SmsListener {
 

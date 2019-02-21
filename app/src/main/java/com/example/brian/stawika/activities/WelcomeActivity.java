@@ -3,8 +3,8 @@ package com.example.brian.stawika.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -15,10 +15,9 @@ import com.example.brian.stawika.R;
 public class WelcomeActivity extends AppCompatActivity {
 
 
-   RecyclerView recyclerView;
+    RecyclerView recyclerView;
 
     //inflate menu
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -38,9 +37,12 @@ public class WelcomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
 
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
     }
-    public void profile(View view){
+
+    public void profile(View view) {
         Intent intent = new Intent(WelcomeActivity.this, ProfileActivity.class);
         startActivity(intent);
     }

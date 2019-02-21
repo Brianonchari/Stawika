@@ -180,8 +180,8 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:background="@drawable/button_rounded_conner"
-                            android:text="@string/save"
                             android:onClick="redirectTologin"
+                            android:text="@string/save"
                             android:textColor="@color/white" />
 
 

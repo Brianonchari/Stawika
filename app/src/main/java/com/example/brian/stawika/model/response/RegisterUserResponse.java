@@ -1,8 +1,13 @@
-package com.example.brian.stawika.Model.response;
+package com.example.brian.stawika.model.response;
 
 public class RegisterUserResponse {
-    String firstName,lastName,otherName,gender,idNumber,email,dob;
+    String firstName, lastName, otherName, gender, idNumber, email, dob;
     String Token;
+
+    public RegisterUserResponse() {
+
+
+    }
 
     public String getFirstName() {
         return firstName;
@@ -66,10 +71,5 @@ public class RegisterUserResponse {
 
     public void setToken(String token) {
         Token = token;
-    }
-
-    public RegisterUserResponse() {
-
-
     }
 }

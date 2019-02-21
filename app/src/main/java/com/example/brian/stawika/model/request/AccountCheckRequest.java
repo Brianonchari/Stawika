@@ -1,6 +1,4 @@
-package com.example.brian.stawika.Model.request;
-
-import android.text.Editable;
+package com.example.brian.stawika.model.request;
 
 import java.util.List;
 
@@ -46,7 +44,7 @@ public class AccountCheckRequest {
         this.accounts = accounts;
     }
 
-    public void createUser(List<Account> accounts){
+    public void createUser(List<Account> accounts) {
 
     }
 

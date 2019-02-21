@@ -1,12 +1,15 @@
 package com.example.brian.stawika.activities;
+
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.SpinnerAdapter;
 import android.widget.TextView;
-import com.example.brian.stawika.Model.SpinnerArrayObject;
+
+import com.example.brian.stawika.model.SpinnerArrayObject;
 import com.example.brian.stawika.R;
+
 import java.util.ArrayList;
 
 public class CustomAdapter extends BaseAdapter implements SpinnerAdapter {
@@ -37,7 +40,7 @@ public class CustomAdapter extends BaseAdapter implements SpinnerAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View view = View.inflate(context, R.layout.company_main, null);
-        TextView textView =  view.findViewById(R.id.main);
+        TextView textView = view.findViewById(R.id.main);
         SpinnerArrayObject currentObject = spinnerArrayObjects.get(position);
         textView.setText(currentObject.getName());
         return textView;
@@ -47,7 +50,7 @@ public class CustomAdapter extends BaseAdapter implements SpinnerAdapter {
 
         View view;
         view = View.inflate(context, R.layout.company_dropdown, null);
-        TextView textView =  view.findViewById(R.id.dropdown);
+        TextView textView = view.findViewById(R.id.dropdown);
         textView.setText(spinnerArrayObjects.get(position).getName());
         return view;
     }

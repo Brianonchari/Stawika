@@ -1,10 +1,10 @@
-package com.example.brian.stawika.Model.response;
+package com.example.brian.stawika.model.response;
 
-public class AccountCheckResponse {
+public class SmsVerificationResponse {
 
     private String token;
 
-    public AccountCheckResponse() {
+    public SmsVerificationResponse() {
     }
 
     public String getToken() {

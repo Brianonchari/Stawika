@@ -1,17 +1,17 @@
 package com.example.brian.stawika.activities;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
-import com.example.brian.stawika.Api.RestApiInterface;
-import com.example.brian.stawika.Api.RestClient;
-import com.example.brian.stawika.Model.request.AccountCheckRequest;
-import com.example.brian.stawika.Model.response.AccountCheckResponse;
+import com.example.brian.stawika.api.RestApiInterface;
+import com.example.brian.stawika.api.RestClient;
+import com.example.brian.stawika.model.request.AccountCheckRequest;
+import com.example.brian.stawika.model.response.AccountCheckResponse;
 import com.example.brian.stawika.R;
 import com.google.gson.Gson;
 
@@ -41,23 +41,23 @@ public class SignUpActivity extends AppCompatActivity {
             public void onClick(View v) {
 
 
-                String phone =  phoneNumberEt.getText().toString().trim();
+                String phone = phoneNumberEt.getText().toString().trim();
                 String password = pinEt.getText().toString().trim();
-                String Confirmpassword =confirmPinEt.getText().toString().trim();
+                String Confirmpassword = confirmPinEt.getText().toString().trim();
 
-                if(phone.isEmpty()){
+                if (phone.isEmpty()) {
                     phoneNumberEt.setError("Phone is required");
                     phoneNumberEt.requestFocus();
                     return;
                 }
 
-                if(password.isEmpty()){
+                if (password.isEmpty()) {
                     pinEt.setError("Enter pin");
                     pinEt.requestFocus();
                     return;
                 }
 
-                if (!password.equals(Confirmpassword)){
+                if (!password.equals(Confirmpassword)) {
                     confirmPinEt.setError("Password Not Matching");
                     confirmPinEt.requestFocus();
                     return;
@@ -75,10 +75,7 @@ public class SignUpActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(Call<AccountCheckResponse> call, Response<AccountCheckResponse> response) {
 
-
-
-
-                        if(response.isSuccessful()){
+                        if (response.isSuccessful()) {
                             Intent intent = new Intent(SignUpActivity.this, EnterCodeActivity.class);
                             intent.putExtra("token", response.body().getToken());
                             startActivity(intent);
@@ -99,7 +96,6 @@ public class SignUpActivity extends AppCompatActivity {
         });
 
 
-
     }
 
 
@@ -113,11 +109,12 @@ public class SignUpActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-   public void launchCode(View view ){
+    public void launchCode(View view) {
         Intent intent = new Intent(this, EnterCodeActivity.class);
         startActivity(intent);
     }
-    public void signIn(View view){
+
+    public void signIn(View view) {
         Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
     }
