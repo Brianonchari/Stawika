@@ -74,7 +74,7 @@ public class LoginActivity extends AppCompatActivity implements DialogInterface.
                         if (response.isSuccessful()) {
                             progress = new ProgressDialog(LoginActivity.this);
                             progress.setMessage("Log In");
-                            progress.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+                            progress.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
                             progress.setIndeterminate(true);
                             progress.setProgress(0);
                             progress.show();
@@ -91,6 +91,8 @@ public class LoginActivity extends AppCompatActivity implements DialogInterface.
                                             jumpTime += 1;
                                             progress.setProgress(jumpTime);
                                         } catch (InterruptedException e) {
+
+                                            Toast.makeText(LoginActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                                             e.printStackTrace();
                                         }
                                     }
@@ -116,7 +118,6 @@ public class LoginActivity extends AppCompatActivity implements DialogInterface.
             }
         });
     }
-
 
 
     public void signUp(View view) {
