@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Spinner;
 
+import com.example.brian.stawika.R;
 import com.example.brian.stawika.api.RestApiInterface;
 import com.example.brian.stawika.api.RestClient;
 import com.example.brian.stawika.model.SpinnerArrayObject;
@@ -18,7 +19,6 @@ import com.example.brian.stawika.model.response.IncomeBand;
 import com.example.brian.stawika.model.response.MaritalStatus;
 import com.example.brian.stawika.model.response.RegistrationDropdownResponse;
 import com.example.brian.stawika.model.response.Rental;
-import com.example.brian.stawika.R;
 import com.example.brian.stawika.utils.Constants;
 import com.google.gson.Gson;
 

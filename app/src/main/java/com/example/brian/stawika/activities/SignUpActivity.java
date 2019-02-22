@@ -36,6 +36,10 @@ public class SignUpActivity extends AppCompatActivity {
         pinEt = findViewById(R.id.password);
         confirmPinEt = findViewById(R.id.confirmpassword);
 
+        //setting cursor position
+        phoneNumberEt.requestFocus();
+        phoneNumberEt.setSelection(phoneNumberEt.length());
+
         findViewById(R.id.btn_sign_up).setOnClickListener(new View.OnClickListener() {
 
 
@@ -47,8 +51,8 @@ public class SignUpActivity extends AppCompatActivity {
                 String password = pinEt.getText().toString().trim();
                 String Confirmpassword = confirmPinEt.getText().toString().trim();
 
-                if (phone.isEmpty()) {
-                    phoneNumberEt.setError("Phone is required");
+                if (phone.isEmpty() && phone.length() != 12) {
+                    phoneNumberEt.setError("Enter a valid phone number");
                     phoneNumberEt.requestFocus();
                     return;
                 }
@@ -66,7 +70,7 @@ public class SignUpActivity extends AppCompatActivity {
 
                 }
 
-                AccountCheckRequest accountCheckRequest = new AccountCheckRequest();
+                final AccountCheckRequest accountCheckRequest = new AccountCheckRequest();
                 accountCheckRequest.setPassword(pinEt.getText().toString());
                 accountCheckRequest.setPhoneNumber(phoneNumberEt.getText().toString());
 
@@ -78,9 +82,15 @@ public class SignUpActivity extends AppCompatActivity {
                     public void onResponse(Call<AccountCheckResponse> call, Response<AccountCheckResponse> response) {
 
                         if (response.isSuccessful()) {
+
+                            Intent intent = new Intent(SignUpActivity.this, EnterCodeActivity.class);
+                            intent.putExtra("token", response.body().getToken());
+                            startActivity(intent);
+
+
                             progress = new ProgressDialog(SignUpActivity.this);
                             progress.setMessage("Sign Up");
-                            progress.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+                            progress.setProgressStyle(ProgressDialog.STYLE_SPINNER);
                             progress.setProgress(0);
                             progress.show();
 
@@ -97,17 +107,13 @@ public class SignUpActivity extends AppCompatActivity {
                                             progress.setProgress(jumpTime);
                                         } catch (InterruptedException e) {
                                             e.printStackTrace();
+                                            Toast.makeText(SignUpActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                                         }
                                     }
+
                                 }
                             };
                             t.start();
-                            Intent intent = new Intent(SignUpActivity.this, EnterCodeActivity.class);
-                            intent.putExtra("token", response.body().getToken());
-                            startActivity(intent);
-
-                        } else {
-                            Toast.makeText(getBaseContext(), "Try Again", Toast.LENGTH_SHORT).show();
                         }
 
                     }
@@ -120,8 +126,6 @@ public class SignUpActivity extends AppCompatActivity {
 
             }
         });
-
-
     }
 
     public void signUp(View view) {

@@ -41,6 +41,10 @@ public class LoginActivity extends AppCompatActivity implements DialogInterface.
 
         phoneEt = findViewById(R.id.phone);
         pinEt = findViewById(R.id.pinEt);
+
+        phoneEt.requestFocus();
+        phoneEt.setSelection(phoneEt.length());
+
         findViewById(R.id.btnSignIn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -49,8 +53,8 @@ public class LoginActivity extends AppCompatActivity implements DialogInterface.
                 final String password = pinEt.getText().toString();
 
 
-                if (phoneNumber.isEmpty()) {
-                    phoneEt.setError("Phone number is required");
+                if (phoneNumber == "" || phoneNumber.length() != 12) {
+                    phoneEt.setError("Enter valid phone number");
                     phoneEt.requestFocus();
                     return;
                 }
@@ -70,7 +74,7 @@ public class LoginActivity extends AppCompatActivity implements DialogInterface.
                         if (response.isSuccessful()) {
                             progress = new ProgressDialog(LoginActivity.this);
                             progress.setMessage("Log In");
-                            progress.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+                            progress.setProgressStyle(ProgressDialog.STYLE_SPINNER);
                             progress.setIndeterminate(true);
                             progress.setProgress(0);
                             progress.show();
@@ -95,6 +99,7 @@ public class LoginActivity extends AppCompatActivity implements DialogInterface.
                             t.start();
                             Intent intent = new Intent(LoginActivity.this, WelcomeActivity.class);
                             startActivity(intent);
+                            finish();
 
 
                         } else {
@@ -111,6 +116,7 @@ public class LoginActivity extends AppCompatActivity implements DialogInterface.
             }
         });
     }
+
 
 
     public void signUp(View view) {

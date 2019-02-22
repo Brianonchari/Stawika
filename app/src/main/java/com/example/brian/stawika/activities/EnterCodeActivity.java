@@ -11,11 +11,11 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import com.example.brian.stawika.R;
 import com.example.brian.stawika.api.RestApiInterface;
 import com.example.brian.stawika.api.RestClient;
 import com.example.brian.stawika.model.request.SmsVerificationRequest;
 import com.example.brian.stawika.model.response.SmsVerificationResponse;
-import com.example.brian.stawika.R;
 import com.google.gson.Gson;
 
 import retrofit2.Call;
@@ -46,6 +46,7 @@ public class EnterCodeActivity extends AppCompatActivity {
         Intent intent = getIntent();
         token = intent.getStringExtra("token");
         Log.e("token", token);
+
 
         registerReceiver(broadcastReceiver, new IntentFilter("broadCastName"));
         setContentView(R.layout.activity_enter_code);
@@ -86,6 +87,9 @@ public class EnterCodeActivity extends AppCompatActivity {
 
                     @Override
                     public void onFailure(Call<SmsVerificationResponse> call, Throwable t) {
+
+                        Toast.makeText(EnterCodeActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
+
 
                     }
                 });
