@@ -42,10 +42,15 @@ public class EnterCodeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        {
 
-        Intent intent = getIntent();
-        token = intent.getStringExtra("token");
-        Log.e("token", token);
+
+            Intent intent = getIntent();
+            token = intent.getStringExtra("token");
+            Log.e("token", token);
+
+            Toast.makeText(this, token, Toast.LENGTH_SHORT).show();
+        }
 
 
         registerReceiver(broadcastReceiver, new IntentFilter("broadCastName"));

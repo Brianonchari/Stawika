@@ -8,8 +8,9 @@ import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
-import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.Toast;
 
 import com.example.brian.stawika.R;
@@ -24,12 +25,12 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 
-public class LoginActivity extends AppCompatActivity implements DialogInterface.OnClickListener {
+public class LoginActivity extends AppCompatActivity implements DialogInterface.OnClickListener, View.OnKeyListener {
 
 
     private TextInputEditText phoneEt, pinEt;
-    private Button btnSignIn;
     private ProgressDialog progress;
+    private CheckBox checkBox;
     private RestApiInterface apiService = RestClient.getClient().create(RestApiInterface.class);
 
     @Override
@@ -38,9 +39,11 @@ public class LoginActivity extends AppCompatActivity implements DialogInterface.
         setContentView(R.layout.activity_login2);
         Log.d("LoginActivity", "");
 
-
         phoneEt = findViewById(R.id.phone);
         pinEt = findViewById(R.id.pinEt);
+        checkBox = findViewById(R.id.checkBox);
+
+        pinEt.setOnKeyListener(this);
 
         phoneEt.requestFocus();
         phoneEt.setSelection(phoneEt.length());
@@ -48,6 +51,8 @@ public class LoginActivity extends AppCompatActivity implements DialogInterface.
         findViewById(R.id.btnSignIn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
 
                 final String phoneNumber = phoneEt.getText().toString();
                 final String password = pinEt.getText().toString();
@@ -63,6 +68,12 @@ public class LoginActivity extends AppCompatActivity implements DialogInterface.
                     pinEt.setError("Password can not be empty");
                     pinEt.requestFocus();
                     return;
+                }
+
+                if(checkBox.isChecked()){
+
+                }else {
+                    Toast.makeText(LoginActivity.this, "Accept Terma and conditions", Toast.LENGTH_SHORT).show();
                 }
 
                 final String authorization = Credentials.basic("android-app", "secret");
@@ -141,4 +152,8 @@ public class LoginActivity extends AppCompatActivity implements DialogInterface.
     }
 
 
+    @Override
+    public boolean onKey(View v, int keyCode, KeyEvent event) {
+        return false;
+    }
 }

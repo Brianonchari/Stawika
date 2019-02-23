@@ -83,10 +83,6 @@ public class SignUpActivity extends AppCompatActivity {
 
                         if (response.isSuccessful()) {
 
-                            Intent intent = new Intent(SignUpActivity.this, EnterCodeActivity.class);
-                            intent.putExtra("token", response.body().getToken());
-                            startActivity(intent);
-
 
                             progress = new ProgressDialog(SignUpActivity.this);
                             progress.setMessage("Sign Up");
@@ -114,6 +110,12 @@ public class SignUpActivity extends AppCompatActivity {
                                 }
                             };
                             t.start();
+
+
+                            Intent intent = new Intent(SignUpActivity.this, EnterCodeActivity.class);
+                            intent.putExtra("token", response.body().getToken());
+                            startActivity(intent);
+                            finish();
                         }
 
                     }
