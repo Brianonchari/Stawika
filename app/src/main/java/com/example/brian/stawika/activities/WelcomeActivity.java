@@ -3,7 +3,6 @@ package com.example.brian.stawika.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -15,8 +14,6 @@ import com.example.brian.stawika.R;
 public class WelcomeActivity extends AppCompatActivity {
 
 
-    RecyclerView recyclerView;
-
     //inflate menu
 
     @Override
@@ -25,6 +22,7 @@ public class WelcomeActivity extends AppCompatActivity {
         menuInflater.inflate(R.menu.main_menu, menu);
         return super.onCreateOptionsMenu(menu);
     }
+
 
     @Override
     public boolean onContextItemSelected(MenuItem item) {

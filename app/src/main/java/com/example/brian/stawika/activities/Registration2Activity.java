@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.example.brian.stawika.R;
 import com.example.brian.stawika.api.RestApiInterface;
@@ -43,7 +44,7 @@ public class Registration2Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_step_tworegister);
 
-        Intent intent = getIntent();
+        final Intent intent = getIntent();
         firstname = intent.getStringExtra("firstname");
         lastname = intent.getStringExtra("lastname");
         othernames = intent.getStringExtra("othernames");
@@ -177,11 +178,16 @@ public class Registration2Activity extends AppCompatActivity {
                             rental.setAdapter(customAdapter);
                         }
 
+                        Intent intent1 = new Intent(Registration2Activity.this, LoginActivity.class);
+                        startActivity(intent1);
+                        finish();
 
                     }
 
                     @Override
                     public void onFailure(Call<RegistrationDropdownResponse> call, Throwable t) {
+
+                        Toast.makeText(Registration2Activity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
             }

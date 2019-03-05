@@ -8,11 +8,11 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import com.example.brian.stawika.R;
 import com.example.brian.stawika.api.RestApiInterface;
 import com.example.brian.stawika.api.RestClient;
 import com.example.brian.stawika.model.request.CommonRequest;
 import com.example.brian.stawika.model.response.RegistrationDropdownResponse;
-import com.example.brian.stawika.R;
 import com.google.gson.Gson;
 
 import retrofit2.Call;
@@ -114,6 +114,8 @@ RegistrationActivity extends AppCompatActivity {
 
                     @Override
                     public void onFailure(Call<RegistrationDropdownResponse> call, Throwable t) {
+
+                        Toast.makeText(RegistrationActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
 
                     }
                 });

@@ -13,29 +13,32 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.EditProfileActivity"></activity>
-        <activity android:name=".activities.ProfileActivity" />
-        <activity android:name=".activities.Registration2Activity">
-            <!--<intent-filter>-->
-            <!--<action android:name="android.intent.action.MAIN" />-->
 
-            <!--<category android:name="android.intent.category.LAUNCHER" />-->
-            <!--</intent-filter>-->
+        <activity android:name="com.example.brian.stawika.activities.EditProfileActivity" />
+        <activity android:name="com.example.brian.stawika.activities.ProfileActivity" />
+        <activity android:name="com.example.brian.stawika.activities.Registration2Activity">
+
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
         </activity>
-        <activity android:name=".activities.PasswordSentActivity" />
+        <activity android:name="com.example.brian.stawika.activities.PasswordSentActivity" />
         <activity
-            android:name=".activities.RegistrationActivity"
+            android:name="com.example.brian.stawika.activities.RegistrationActivity"
             android:theme="@style/SplashTheme" />
-        <activity android:name=".activities.EnterCodeActivity" /> <!-- <activity android:name=".activities.RegistrationActivity" /> -->
+        <activity android:name="com.example.brian.stawika.activities.EnterCodeActivity" /> <!-- <activity android:name=".activities.RegistrationActivity" /> -->
         <activity
-            android:name=".activities.WelcomeActivity"
-            android:parentActivityName=".activities.LoginActivity">
+            android:name="com.example.brian.stawika.activities.WelcomeActivity"
+            android:parentActivityName="com.example.brian.stawika.activities.LoginActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.brian.stawika.activities.LoginActivity" />
         </activity>
-        <activity android:name=".activities.ResetPinActivity" />
-        <activity android:name=".activities.LoginActivity">
+        <activity android:name="com.example.brian.stawika.activities.ResetPinActivity" />
+        <activity android:name="com.example.brian.stawika.activities.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -43,14 +46,14 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activities.SignUpActivity"
+            android:name="com.example.brian.stawika.activities.SignUpActivity"
             android:label=" Sign Up"
-            android:parentActivityName=".activities.LoginActivity">
+            android:parentActivityName="com.example.brian.stawika.activities.LoginActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.brian.stawika.activities.LoginActivity" />
         </activity> <!-- SMS reciever -->
-        <receiver android:name=".receivers.SmsReceiver">
+        <receiver android:name="com.example.brian.stawika.receivers.SmsReceiver">
             <intent-filter android:priority="9999">
                 <action android:name="android.provider.Telephony.SMS_RECEIVED" />
             </intent-filter>

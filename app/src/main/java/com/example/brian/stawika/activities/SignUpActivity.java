@@ -70,6 +70,13 @@ public class SignUpActivity extends AppCompatActivity {
 
                 }
 
+                progress = new ProgressDialog(SignUpActivity.this);
+                progress.setTitle("Please Wait");
+                progress.setMessage("Sign Up");
+                progress.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+                progress.setProgress(0);
+                progress.show();
+
                 final AccountCheckRequest accountCheckRequest = new AccountCheckRequest();
                 accountCheckRequest.setPassword(pinEt.getText().toString());
                 accountCheckRequest.setPhoneNumber(phoneNumberEt.getText().toString());
@@ -81,45 +88,17 @@ public class SignUpActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(Call<AccountCheckResponse> call, Response<AccountCheckResponse> response) {
 
-                        if (response.isSuccessful()) {
-
-
-                            progress = new ProgressDialog(SignUpActivity.this);
-                            progress.setMessage("Sign Up");
-                            progress.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-                            progress.setProgress(0);
-                            progress.show();
-
-                            final int totalProgressTime = 100;
-                            final Thread t = new Thread() {
-                                @Override
-                                public void run() {
-                                    int jumpTime = 0;
-
-                                    while (jumpTime < totalProgressTime) {
-                                        try {
-                                            sleep(2000);
-                                            jumpTime += 1;
-                                            progress.setProgress(jumpTime);
-                                        } catch (InterruptedException e) {
-                                            e.printStackTrace();
-                                            Toast.makeText(SignUpActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
-                                        }
-                                    }
-
-                                }
-                            };
-                            t.start();
-
-
+                        progress.dismiss();
+                        if (response.code() == 201) {
                             Intent intent = new Intent(SignUpActivity.this, EnterCodeActivity.class);
-                            intent.putExtra("token", response.body().getToken());
                             startActivity(intent);
                             finish();
+                        } else if (response.code() != 201 || response.code() == 422) {
+                            Intent intent = new Intent(SignUpActivity.this, LoginActivity.class);
+                            startActivity(intent);
+                            Toast.makeText(SignUpActivity.this, "User already exists", Toast.LENGTH_SHORT).show();
                         }
-
                     }
-
                     @Override
                     public void onFailure(Call<AccountCheckResponse> call, Throwable t) {
 

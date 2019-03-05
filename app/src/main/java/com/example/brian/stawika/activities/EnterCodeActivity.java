@@ -44,12 +44,11 @@ public class EnterCodeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         {
 
-
             Intent intent = getIntent();
             token = intent.getStringExtra("token");
             Log.e("token", token);
 
-            Toast.makeText(this, token, Toast.LENGTH_SHORT).show();
+
         }
 
 

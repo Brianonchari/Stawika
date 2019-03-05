@@ -41,7 +41,7 @@ public class LoginActivity extends AppCompatActivity implements DialogInterface.
 
         phoneEt = findViewById(R.id.phone);
         pinEt = findViewById(R.id.pinEt);
-        checkBox = findViewById(R.id.checkBox);
+
 
         pinEt.setOnKeyListener(this);
 
@@ -70,11 +70,6 @@ public class LoginActivity extends AppCompatActivity implements DialogInterface.
                     return;
                 }
 
-                if(checkBox.isChecked()){
-
-                }else {
-                    Toast.makeText(LoginActivity.this, "Accept Terma and conditions", Toast.LENGTH_SHORT).show();
-                }
 
                 final String authorization = Credentials.basic("android-app", "secret");
 
@@ -83,37 +78,28 @@ public class LoginActivity extends AppCompatActivity implements DialogInterface.
                     @Override
                     public void onResponse(Call<Map<String, Object>> call, Response<Map<String, Object>> response) {
                         if (response.isSuccessful()) {
-                            progress = new ProgressDialog(LoginActivity.this);
-                            progress.setMessage("Log In");
-                            progress.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
-                            progress.setIndeterminate(true);
-                            progress.setProgress(0);
-                            progress.show();
+                            checkBox = findViewById(R.id.checkBox);
+                            if(checkBox.isChecked()){
 
-                            final int totalProgressTime = 100;
-                            final Thread t = new Thread() {
-                                @Override
-                                public void run() {
-                                    int jumpTime = 1;
+                                progress = new ProgressDialog(LoginActivity.this);
+                                progress.setTitle("Please wait");
+                                progress.setMessage("Log In");
+                                progress.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+                                progress.setIndeterminate(true);
+                                progress.setProgress(0);
+                                progress.show();
 
-                                    while (jumpTime < totalProgressTime) {
-                                        try {
-                                            sleep(20000);
-                                            jumpTime += 1;
-                                            progress.setProgress(jumpTime);
-                                        } catch (InterruptedException e) {
+                                progress.dismiss();
 
-                                            Toast.makeText(LoginActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
-                                            e.printStackTrace();
-                                        }
-                                    }
-                                }
-                            };
-                            t.start();
-                            Intent intent = new Intent(LoginActivity.this, WelcomeActivity.class);
-                            startActivity(intent);
-                            finish();
 
+                                Intent intent = new Intent(LoginActivity.this, WelcomeActivity.class);
+                                startActivity(intent);
+                                finish();
+
+                            }else {
+                                checkBox.setError("Please accept terms and conitions");
+                                checkBox.requestFocus();
+                            }
 
                         } else {
                             Log.e("LogIn", String.valueOf(response));
@@ -132,8 +118,8 @@ public class LoginActivity extends AppCompatActivity implements DialogInterface.
 
 
     public void signUp(View view) {
-        Intent signup = new Intent(this, SignUpActivity.class);
-        startActivity(signup);
+        Intent intent = new Intent(LoginActivity.this, SignUpActivity.class);
+        startActivity(intent);
     }
 
     public void launchCode(View view) {

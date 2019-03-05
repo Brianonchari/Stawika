@@ -3,6 +3,7 @@ package com.example.brian.stawika.model.response;
 public class AccountCheckResponse {
 
     private String token;
+    private String message;
 
     public AccountCheckResponse() {
     }
@@ -13,5 +14,13 @@ public class AccountCheckResponse {
 
     public void setToken(String token) {
         this.token = token;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
     }
 }
