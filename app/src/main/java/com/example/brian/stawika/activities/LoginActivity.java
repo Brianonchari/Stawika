@@ -2,8 +2,10 @@ package com.example.brian.stawika.activities;
 
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
@@ -42,7 +44,6 @@ public class LoginActivity extends AppCompatActivity implements DialogInterface.
         phoneEt = findViewById(R.id.phone);
         pinEt = findViewById(R.id.pinEt);
 
-
         pinEt.setOnKeyListener(this);
 
         phoneEt.requestFocus();
@@ -52,11 +53,8 @@ public class LoginActivity extends AppCompatActivity implements DialogInterface.
             @Override
             public void onClick(View v) {
 
-
-
                 final String phoneNumber = phoneEt.getText().toString();
                 final String password = pinEt.getText().toString();
-
 
                 if (phoneNumber == "" || phoneNumber.length() != 12) {
                     phoneEt.setError("Enter valid phone number");
@@ -70,6 +68,14 @@ public class LoginActivity extends AppCompatActivity implements DialogInterface.
                     return;
                 }
 
+                progress = new ProgressDialog(LoginActivity.this);
+                progress.setTitle("Please wait");
+                progress.setMessage("Log In");
+                progress.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+                progress.setIndeterminate(true);
+                progress.setProgress(0);
+                progress.show();
+
 
                 final String authorization = Credentials.basic("android-app", "secret");
 
@@ -78,25 +84,27 @@ public class LoginActivity extends AppCompatActivity implements DialogInterface.
                     @Override
                     public void onResponse(Call<Map<String, Object>> call, Response<Map<String, Object>> response) {
                         if (response.isSuccessful()) {
-                            checkBox = findViewById(R.id.checkBox);
-                            if(checkBox.isChecked()){
 
-                                progress = new ProgressDialog(LoginActivity.this);
-                                progress.setTitle("Please wait");
-                                progress.setMessage("Log In");
-                                progress.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-                                progress.setIndeterminate(true);
-                                progress.setProgress(0);
-                                progress.show();
+
+                            checkBox = findViewById(R.id.checkBox);
+                            if (checkBox.isChecked()) {
+
 
                                 progress.dismiss();
+
+                                String token = (String) response.body().get("access_token");
+
+                                SharedPreferences preferences = LoginActivity.this.getSharedPreferences("com.example.brian.stawika.activities", Context.MODE_PRIVATE);
+                                preferences.edit().putString("token", token).apply();
+
+                                Log.i("token", token);
 
 
                                 Intent intent = new Intent(LoginActivity.this, WelcomeActivity.class);
                                 startActivity(intent);
                                 finish();
 
-                            }else {
+                            } else {
                                 checkBox.setError("Please accept terms and conitions");
                                 checkBox.requestFocus();
                             }

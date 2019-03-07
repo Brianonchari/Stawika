@@ -4,6 +4,7 @@ public class AccountCheckResponse {
 
     private String token;
     private String message;
+    private String status;
 
     public AccountCheckResponse() {
     }
@@ -22,5 +23,13 @@ public class AccountCheckResponse {
 
     public void setMessage(String message) {
         this.message = message;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

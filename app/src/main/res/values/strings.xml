@@ -51,7 +51,7 @@
     <string name="marital_status">MARITAL STATUS</string>
     <string name="welcome">WELCOME</string>
     <string name="your_loan_balance">YOUR LOAN BALANCE :</string>
-    <string name="_2_050">2,050</string>
+    <string name="_2_050">100,000</string>
     <string name="repay">REPAY</string>
     <string name="your_wallet_balance">YOUR WALLET BALANCE</string>
     <string name="kes">KES</string>
@@ -71,6 +71,15 @@
     <string name="high_school_name">HIGH SCHOOL NAME</string>
     <string name="single">Single</string>
     <string name="edit_profile">Edit Profile</string>
+    <string name="_0">0</string>
+    <string name="last_transactions">LAST TRANSACTIONS</string>
+    <string name="no_activity">NO ACTIVITY</string>
+    <string name="noactivitydescription">Currently you have no transaction history. Start loan or top up your wallet balance</string>
+    <string name="your_loan_limit">YOUR LOAN LIMIT</string>
+    <string name="startloan">START LOAN</string>
+    <string name="top_up">Top UP</string>
+    <string name="schedule">Please choose repayment shedule accepted to you</string>
+    <string name="_21_days">21 DAYS</string>
 
 
 </resources>

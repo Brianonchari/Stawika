@@ -59,11 +59,11 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/balanceTextView"
+                        android:id="@+id/loanLimitTv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/_2_050"
-                        android:textColor="@android:color/holo_orange_dark"
+                        android:textColor="@color/color_paid_green"
                         android:textSize="30sp" />
 
                     <TextView
@@ -72,16 +72,18 @@
                         android:layout_marginStart="5dp"
                         android:layout_marginLeft="5dp"
                         android:text="@string/kes"
-                        android:textColor="@android:color/holo_orange_dark"
+                        android:textColor="@color/color_paid_green"
                         android:textSize="25sp" />
 
                     <Button
                         android:id="@+id/repayButton"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="50dp"
-                        android:background="@drawable/button_rounded_conner"
-                        android:text="@string/repay"
+                        android:layout_marginLeft="30dp"
+                        android:background="@drawable/green_button_corner"
+                        android:text="@string/startloan"
+                        android:onClick="startLoan"
+                        android:padding="5dp"
                         android:textColor="@color/white" />
 
                 </LinearLayout>
@@ -114,11 +116,11 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/walletTextView"
+                    android:id="@+id/walletBalanceTv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/_2_050"
-                    android:textColor="@android:color/holo_blue_dark"
+                    android:text="@string/_0"
+                    android:textColor="@android:color/holo_orange_dark"
                     android:textSize="30sp" />
 
                 <TextView
@@ -127,21 +129,23 @@
                     android:layout_marginStart="5dp"
                     android:layout_marginLeft="5dp"
                     android:text="@string/kes"
-                    android:textColor="@android:color/holo_blue_dark"
+                    android:textColor="@android:color/holo_orange_dark"
                     android:textSize="25sp" />
 
                 <Button
                     android:id="@+id/lendButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="50dp"
-                    android:background="@drawable/blue_rounded_coner"
-                    android:text="@string/start_lend"
+                    android:layout_marginLeft="120dp"
+                    android:background="@drawable/button_rounded_conner"
+                    android:text="@string/top_up"
                     android:textColor="@color/white" />
 
             </LinearLayout>
 
         </LinearLayout>
+
+
 
     </android.support.v7.widget.Toolbar>
 
@@ -165,243 +169,35 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="5dp"
-                android:text="@string/repayment_schedule" />
+                android:text="@string/last_transactions" />
 
-            <ScrollView
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/repaymentSchedule">
+                android:layout_below="@+id/repaymentSchedule"
+                android:layout_centerInParent="true"
+                android:orientation="vertical"
+                android:layout_marginTop="20dp">
 
-                <LinearLayout
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:textStyle="bold"
+                    android:textSize="18sp"
+                    android:layout_gravity="center"
+                    android:textColor="#103c62"
+                    android:text="@string/no_activity"/>
+
+                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:orientation="vertical">
+                    android:gravity="center"
+                    android:textColor="#104069"
+                    android:text="@string/noactivitydescription"/>
 
+            </LinearLayout>
 
-                    <LinearLayout
-                        android:id="@+id/title"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/repaymentSchedule"
-                        android:layout_margin="3dp"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:fontFamily="serif"
-                            android:text="@string/due_date"
-                            android:textColor="#A3A9B0"
-                            android:textSize="12sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:fontFamily="serif"
-                            android:text="@string/installment"
-                            android:textColor="#A3A9B0"
-                            android:textSize="12sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:fontFamily="serif"
-                            android:text="@string/balance"
-                            android:textColor="#A3A9B0"
-                            android:textSize="12sp"
-                            android:textStyle="bold" />
-
-                    </LinearLayout>
-
-                    <View
-                        android:id="@+id/line1"
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_below="@+id/title"
-                        android:layout_margin="5dp"
-                        android:background="@color/color_gray_line" />
-
-
-                    <LinearLayout
-                        android:id="@+id/linearLayout2"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/line1"
-                        android:orientation="horizontal"
-                        android:padding="10dp">
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="@string/jun_7_n_thursday"
-                            android:textColor="#BDC6CF"
-                            android:textSize="12sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:id="@+id/kes"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:padding="10dp"
-                            android:text="@string/_650_kes"
-                            android:textColor="#BDC6CF"
-                            android:textSize="16sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:id="@+id/balance"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:fontFamily="serif"
-                            android:padding="10dp"
-                            android:text="@string/_650_kes"
-                            android:textColor="@color/blue"
-                            android:textStyle="bold" />
-                    </LinearLayout>
-
-
-                    <View
-                        android:id="@+id/line2"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_below="@+id/linearLayout2" />
-
-                    <LinearLayout
-                        android:id="@+id/linearLayout3"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/line2"
-                        android:orientation="horizontal"
-                        android:padding="10dp">
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="@string/jun_7_n_thursday"
-                            android:textColor="#BDC6CF"
-                            android:textSize="12sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:padding="10dp"
-                            android:text="@string/_650_kes"
-                            android:textColor="#BDC6CF"
-                            android:textSize="16sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:fontFamily="serif"
-                            android:padding="10dp"
-                            android:text="@string/_650_kes"
-                            android:textColor="@color/blue"
-                            android:textStyle="bold" />
-                    </LinearLayout>
-
-                    <View
-                        android:id="@+id/line3"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_below="@+id/linearLayout3" />
-
-                    <LinearLayout
-                        android:id="@+id/linearLayout4"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/line3"
-                        android:orientation="horizontal"
-                        android:padding="10dp">
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="@string/jun_7_n_thursday"
-                            android:textColor="#BDC6CF"
-                            android:textSize="12sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:padding="10dp"
-                            android:text="@string/_650_kes"
-                            android:textColor="#BDC6CF"
-                            android:textSize="16sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:fontFamily="serif"
-                            android:padding="10dp"
-                            android:text="@string/_650_kes"
-                            android:textColor="@color/blue"
-                            android:textStyle="bold" />
-                    </LinearLayout>
-
-                    <View
-                        android:id="@+id/line4"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_below="@+id/linearLayout4" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/line4"
-                        android:orientation="horizontal"
-                        android:padding="10dp">
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="@string/jun_7_n_thursday"
-                            android:textColor="#BDC6CF"
-                            android:textSize="12sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:padding="10dp"
-                            android:text="@string/_650_kes"
-                            android:textColor="#BDC6CF"
-                            android:textSize="16sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:fontFamily="serif"
-                            android:padding="10dp"
-                            android:text="@string/_650_kes"
-                            android:textColor="@color/blue"
-                            android:textStyle="bold" />
-                    </LinearLayout>
-
-                </LinearLayout>
-            </ScrollView>
 
 
         </RelativeLayout>
@@ -493,7 +289,6 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:clickable="true"
-                    android:onClick="profile"
                     app:srcCompat="@drawable/ic_person_black_24dp" />
 
                 <TextView

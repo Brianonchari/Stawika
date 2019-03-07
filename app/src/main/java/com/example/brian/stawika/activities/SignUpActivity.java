@@ -89,6 +89,7 @@ public class SignUpActivity extends AppCompatActivity {
                     public void onResponse(Call<AccountCheckResponse> call, Response<AccountCheckResponse> response) {
 
                         progress.dismiss();
+
                         if (response.code() == 201) {
                             Intent intent = new Intent(SignUpActivity.this, EnterCodeActivity.class);
                             startActivity(intent);
