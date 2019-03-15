@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name="com.example.brian.stawika.activities.EditProfileActivity" />
+        <!--<activity android:name="com.example.brian.stawika.activities.EditProfileActivity" />-->
         <activity android:name="com.example.brian.stawika.activities.ProfileActivity" />
         <activity android:name="com.example.brian.stawika.activities.Registration2Activity">
 
@@ -30,6 +30,7 @@
             android:name="com.example.brian.stawika.activities.RegistrationActivity"
             android:theme="@style/SplashTheme" />
         <activity android:name="com.example.brian.stawika.activities.EnterCodeActivity" /> <!-- <activity android:name=".activities.RegistrationActivity" /> -->
+
         <activity
             android:name="com.example.brian.stawika.activities.WelcomeActivity"
             android:parentActivityName="com.example.brian.stawika.activities.LoginActivity">
@@ -37,14 +38,16 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.brian.stawika.activities.LoginActivity" />
         </activity>
+
         <activity android:name="com.example.brian.stawika.activities.ResetPinActivity" />
+
         <activity android:name="com.example.brian.stawika.activities.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name="com.example.brian.stawika.activities.SignUpActivity"
             android:label=" Sign Up"
@@ -53,11 +56,13 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.brian.stawika.activities.LoginActivity" />
         </activity> <!-- SMS reciever -->
+
         <receiver android:name="com.example.brian.stawika.receivers.SmsReceiver">
             <intent-filter android:priority="9999">
                 <action android:name="android.provider.Telephony.SMS_RECEIVED" />
             </intent-filter>
         </receiver>
+
     </application>
 
 </manifest>

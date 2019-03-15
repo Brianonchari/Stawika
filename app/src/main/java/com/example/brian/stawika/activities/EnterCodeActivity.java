@@ -43,14 +43,10 @@ public class EnterCodeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         {
-
             Intent intent = getIntent();
             token = intent.getStringExtra("token");
             Log.e("token", token);
-
-
         }
-
 
         registerReceiver(broadcastReceiver, new IntentFilter("broadCastName"));
         setContentView(R.layout.activity_enter_code);
@@ -79,7 +75,6 @@ public class EnterCodeActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(Call<SmsVerificationResponse> call, Response<SmsVerificationResponse> response) {
 
-
                         if (response.isSuccessful()) {
                             Intent intent = new Intent(EnterCodeActivity.this, RegistrationActivity.class);
                             intent.putExtra("token", response.body().getToken());
@@ -93,8 +88,6 @@ public class EnterCodeActivity extends AppCompatActivity {
                     public void onFailure(Call<SmsVerificationResponse> call, Throwable t) {
 
                         Toast.makeText(EnterCodeActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
-
-
                     }
                 });
 

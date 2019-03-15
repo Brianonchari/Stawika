@@ -29,15 +29,17 @@ import retrofit2.Response;
 
 public class LoginActivity extends AppCompatActivity implements DialogInterface.OnClickListener, View.OnKeyListener {
 
-
     private TextInputEditText phoneEt, pinEt;
     private ProgressDialog progress;
     private CheckBox checkBox;
     private RestApiInterface apiService = RestClient.getClient().create(RestApiInterface.class);
+    private String phoneNumber, password;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_login2);
         Log.d("LoginActivity", "");
 
@@ -53,16 +55,20 @@ public class LoginActivity extends AppCompatActivity implements DialogInterface.
             @Override
             public void onClick(View v) {
 
-                final String phoneNumber = phoneEt.getText().toString();
-                final String password = pinEt.getText().toString();
+                if (phoneEt.getText() != null && phoneEt.getText().length() > 0)
+                    phoneNumber = phoneEt.getText().toString().replace(" | ", "");
 
-                if (phoneNumber == "" || phoneNumber.length() != 12) {
+                if (pinEt.getText() != null && pinEt.getText().length() > 0)
+                    password = pinEt.getText().toString();
+
+                if ("".equals(phoneNumber) || phoneNumber.length() != 12) {
                     phoneEt.setError("Enter valid phone number");
                     phoneEt.requestFocus();
                     return;
                 }
 
                 if (password.isEmpty()) {
+
                     pinEt.setError("Password can not be empty");
                     pinEt.requestFocus();
                     return;
@@ -76,19 +82,18 @@ public class LoginActivity extends AppCompatActivity implements DialogInterface.
                 progress.setProgress(0);
                 progress.show();
 
-
                 final String authorization = Credentials.basic("android-app", "secret");
 
                 Call<Map<String, Object>> call = apiService.authenticate(authorization, "password", phoneEt.getText().toString(), pinEt.getText().toString());
                 call.enqueue(new Callback<Map<String, Object>>() {
                     @Override
                     public void onResponse(Call<Map<String, Object>> call, Response<Map<String, Object>> response) {
+
                         if (response.isSuccessful()) {
 
-
                             checkBox = findViewById(R.id.checkBox);
-                            if (checkBox.isChecked()) {
 
+                            if (checkBox.isChecked()) {
 
                                 progress.dismiss();
 
@@ -99,13 +104,12 @@ public class LoginActivity extends AppCompatActivity implements DialogInterface.
 
                                 Log.i("token", token);
 
-
                                 Intent intent = new Intent(LoginActivity.this, WelcomeActivity.class);
                                 startActivity(intent);
                                 finish();
 
                             } else {
-                                checkBox.setError("Please accept terms and conitions");
+                                checkBox.setError("Please accept terms and conditions");
                                 checkBox.requestFocus();
                             }
 

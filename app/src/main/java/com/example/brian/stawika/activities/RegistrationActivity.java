@@ -28,6 +28,7 @@ RegistrationActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
 
@@ -38,21 +39,23 @@ RegistrationActivity extends AppCompatActivity {
         emailEt = findViewById(R.id.email);
         DOBEt = findViewById(R.id.enter_dob);
 
-
         findViewById(R.id.btn_proceed).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 final String firstname = firstnameEt.getText().toString();
                 final String lastname = lastnameEt.getText().toString();
                 final String otherName = othernamesEt.getText().toString();
                 final String idNumber = IDEt.getText().toString();
                 final String email = emailEt.getText().toString();
                 final String dob = DOBEt.getText().toString();
+
                 if (firstname.isEmpty()) {
                     firstnameEt.setError("This Field is required");
                     firstnameEt.requestFocus();
                     return;
                 }
+
                 if (lastname.isEmpty()) {
                     lastnameEt.setError("This Field is required");
                     lastnameEt.requestFocus();
@@ -84,7 +87,6 @@ RegistrationActivity extends AppCompatActivity {
                 commonRequest.setImei("imei");
                 commonRequest.setManufacturer("manufacturer");
                 commonRequest.setSimSerial("sim serial");
-
 
                 Log.e("REQUEST", new Gson().toJson(commonRequest));
 
