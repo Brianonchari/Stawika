@@ -15,6 +15,8 @@ import com.example.brian.stawika.model.request.CommonRequest;
 import com.example.brian.stawika.model.response.RegistrationDropdownResponse;
 import com.google.gson.Gson;
 
+import java.io.IOException;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -24,6 +26,7 @@ public class
 RegistrationActivity extends AppCompatActivity {
 
     private TextInputEditText firstnameEt, lastnameEt, othernamesEt, IDEt, emailEt, DOBEt;
+    private String firstName, lastName, otherName, idNumber, email, dob;
     private RestApiInterface apiService = RestClient.getClient().create(RestApiInterface.class);
 
     @Override
@@ -43,20 +46,31 @@ RegistrationActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                final String firstname = firstnameEt.getText().toString();
-                final String lastname = lastnameEt.getText().toString();
-                final String otherName = othernamesEt.getText().toString();
-                final String idNumber = IDEt.getText().toString();
-                final String email = emailEt.getText().toString();
-                final String dob = DOBEt.getText().toString();
+                if (firstnameEt.getText() != null && firstnameEt.length() > 0)
+                    firstName = firstnameEt.getText().toString();
 
-                if (firstname.isEmpty()) {
+                if (lastnameEt.getText() != null && lastnameEt.length() > 0)
+                    lastName = lastnameEt.getText().toString();
+
+                if (othernamesEt.getText() != null && othernamesEt.length() > 0)
+                    otherName = othernamesEt.getText().toString();
+
+                if (IDEt.getText() != null && IDEt.length() > 0)
+                    idNumber = IDEt.getText().toString();
+
+                if (emailEt.getText() != null && emailEt.length() > 0)
+                    email = emailEt.getText().toString();
+
+                if (DOBEt.getText() != null && DOBEt.length() > 0)
+                    dob = DOBEt.getText().toString();
+
+                if (firstName.isEmpty()) {
                     firstnameEt.setError("This Field is required");
                     firstnameEt.requestFocus();
                     return;
                 }
 
-                if (lastname.isEmpty()) {
+                if (lastName.isEmpty()) {
                     lastnameEt.setError("This Field is required");
                     lastnameEt.requestFocus();
                     return;
@@ -100,8 +114,8 @@ RegistrationActivity extends AppCompatActivity {
 
                         if (response.isSuccessful()) {
                             Intent intent = new Intent(RegistrationActivity.this, Registration2Activity.class);
-                            intent.putExtra("firstname", firstname);
-                            intent.putExtra("lastname", lastname);
+                            intent.putExtra("firstname", firstName);
+                            intent.putExtra("lastname", lastName);
                             intent.putExtra("othernames", otherName);
                             intent.putExtra("id", idNumber);
                             intent.putExtra("email", email);
@@ -116,8 +130,10 @@ RegistrationActivity extends AppCompatActivity {
 
                     @Override
                     public void onFailure(Call<RegistrationDropdownResponse> call, Throwable t) {
-
-                        Toast.makeText(RegistrationActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
+                        if (t instanceof IOException) {
+                            Toast.makeText(RegistrationActivity.this, "Network Error " +
+                                    "Check your Internet connection", Toast.LENGTH_SHORT).show();
+                        }
 
                     }
                 });

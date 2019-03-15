@@ -19,9 +19,11 @@ import com.example.brian.stawika.R;
 import com.example.brian.stawika.api.RestApiInterface;
 import com.example.brian.stawika.api.RestClient;
 
+import java.io.IOException;
 import java.util.Map;
 
 import okhttp3.Credentials;
+import okhttp3.internal.http2.ErrorCode;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -56,7 +58,8 @@ public class LoginActivity extends AppCompatActivity implements DialogInterface.
             public void onClick(View v) {
 
                 if (phoneEt.getText() != null && phoneEt.getText().length() > 0)
-                    phoneNumber = phoneEt.getText().toString().replace(" | ", "");
+                    phoneNumber = phoneEt.getText().toString().replace("|", "");
+                ;
 
                 if (pinEt.getText() != null && pinEt.getText().length() > 0)
                     password = pinEt.getText().toString();
@@ -114,20 +117,28 @@ public class LoginActivity extends AppCompatActivity implements DialogInterface.
                             }
 
                         } else {
-                            Log.e("LogIn", String.valueOf(response));
-                            Toast.makeText(getBaseContext(), "Check Your details", Toast.LENGTH_SHORT).show();
+                            // Log.e("LogIn", String.valueOf(response));
+                            if (response.code() == 400) {
+                                progress.dismiss();
+                                Toast.makeText(LoginActivity.this, "Error 404: Bad Request ,Try Again", Toast.LENGTH_SHORT).show();
+                            }
                         }
                     }
 
                     @Override
                     public void onFailure(Call<Map<String, Object>> call, Throwable t) {
+                        if (t instanceof IOException) {
+                            progress.dismiss();
+                            Toast.makeText(LoginActivity.this, "Network Error, " +
+                                    "Check yout internet connection", Toast.LENGTH_LONG).show();
+
+                        }
 
                     }
                 });
             }
         });
     }
-
 
     public void signUp(View view) {
         Intent intent = new Intent(LoginActivity.this, SignUpActivity.class);
@@ -148,7 +159,6 @@ public class LoginActivity extends AppCompatActivity implements DialogInterface.
     public void onClick(DialogInterface dialog, int which) {
 
     }
-
 
     @Override
     public boolean onKey(View v, int keyCode, KeyEvent event) {

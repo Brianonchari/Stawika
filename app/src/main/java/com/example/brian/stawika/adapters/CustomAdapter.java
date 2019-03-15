@@ -1,4 +1,4 @@
-package com.example.brian.stawika.activities;
+package com.example.brian.stawika.adapters;
 
 import android.content.Context;
 import android.view.View;

@@ -6,11 +6,11 @@ import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.brian.stawika.R;
+import com.example.brian.stawika.adapters.CustomAdapter;
 import com.example.brian.stawika.api.RestApiInterface;
 import com.example.brian.stawika.api.RestClient;
 import com.example.brian.stawika.model.SpinnerArrayObject;
@@ -24,6 +24,7 @@ import com.example.brian.stawika.model.response.Rental;
 import com.example.brian.stawika.utils.Constants;
 import com.google.gson.Gson;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,9 +36,10 @@ import retrofit2.Response;
 public class Registration2Activity extends AppCompatActivity {
 
     private TextInputEditText nextOfkinEt, nextOfkinPhone;
-    private String firstname, lastname, othernames, id, email, dob;
+    private String firstName, lastName, otherNames, id, email, dob;
     private RestApiInterface apiService = RestClient.getClient().create(RestApiInterface.class);
     private Spinner spCompany, eductionLevel, maritalStatus, rental, averageIncome;
+    private String nextOfkin,nextOfkinphone;
 
 
     @Override
@@ -46,9 +48,9 @@ public class Registration2Activity extends AppCompatActivity {
         setContentView(R.layout.activity_step_tworegister);
 
         final Intent intent = getIntent();
-        firstname = intent.getStringExtra("firstname");
-        lastname = intent.getStringExtra("lastname");
-        othernames = intent.getStringExtra("othernames");
+        firstName = intent.getStringExtra("firstname");
+        lastName = intent.getStringExtra("lastname");
+        otherNames = intent.getStringExtra("othernames");
         id = intent.getStringExtra("id");
         email = intent.getStringExtra("email");
         dob = intent.getStringExtra("dob");
@@ -68,16 +70,20 @@ public class Registration2Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                final String nextOfkin = nextOfkinEt.getText().toString();
-                final String nextOfkinphone = nextOfkinPhone.getText().toString();
+                if(nextOfkinEt.getText()!=null && nextOfkinEt.length()>0)
+                nextOfkin = nextOfkinEt.getText().toString();
+
+                if(nextOfkinPhone.getText()!= null && nextOfkinPhone.length()>0)
+                    nextOfkinphone = nextOfkinPhone.getText().toString();
+
 
                 if (nextOfkin.isEmpty()) {
                     nextOfkinEt.setError("This field is required");
                     nextOfkinEt.requestFocus();
                     return;
                 }
-                if (nextOfkinphone.isEmpty()) {
-                    nextOfkinPhone.setError("This field is required");
+                if ("".equals(nextOfkinphone)  || nextOfkinPhone.length()!=12) {
+                    nextOfkinPhone.setError("Enter valid phone number");
                     nextOfkinPhone.requestFocus();
                     return;
                 }
@@ -186,8 +192,9 @@ public class Registration2Activity extends AppCompatActivity {
 
                     @Override
                     public void onFailure(Call<RegistrationDropdownResponse> call, Throwable t) {
-
-                        Toast.makeText(Registration2Activity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
+                        if(t instanceof IOException){
+                            Toast.makeText(Registration2Activity.this, "Check your Internet Conectivity", Toast.LENGTH_SHORT).show();
+                        }
                     }
                 });
             }
