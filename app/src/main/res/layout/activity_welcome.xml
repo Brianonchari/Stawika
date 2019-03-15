@@ -47,7 +47,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/your_loan_balance"
+                        android:text="@string/your_loan_limit"
                         android:textColor="@color/white"
                         android:textSize="15sp" />
 
@@ -76,13 +76,13 @@
                         android:textSize="25sp" />
 
                     <Button
-                        android:id="@+id/repayButton"
+                        android:id="@+id/startLoanButton"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="30dp"
+                        android:layout_marginLeft="20dp"
                         android:background="@drawable/green_button_corner"
                         android:text="@string/startloan"
-                        android:onClick="startLoan"
+                        android:onClick="startLoanButton"
                         android:padding="5dp"
                         android:textColor="@color/white" />
 
@@ -136,7 +136,7 @@
                     android:id="@+id/lendButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="120dp"
+                    android:layout_marginLeft="100dp"
                     android:background="@drawable/button_rounded_conner"
                     android:text="@string/top_up"
                     android:textColor="@color/white" />

@@ -4,17 +4,15 @@ import com.example.brian.stawika.model.request.AccountCheckRequest;
 import com.example.brian.stawika.model.request.CommonRequest;
 import com.example.brian.stawika.model.request.RegisterUserRequest;
 import com.example.brian.stawika.model.request.SmsVerificationRequest;
-import com.example.brian.stawika.model.request.TransactionsHomeRequest;
 import com.example.brian.stawika.model.response.AccountCheckResponse;
+import com.example.brian.stawika.model.response.LoanProductResponse;
 import com.example.brian.stawika.model.response.RegisterUserResponse;
 import com.example.brian.stawika.model.response.RegistrationDropdownResponse;
 import com.example.brian.stawika.model.response.SmsVerificationResponse;
 import com.example.brian.stawika.model.response.TransactionHomeResponse;
 
-
 import java.util.Map;
 
-import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
@@ -45,8 +43,9 @@ public interface RestApiInterface {
 
 
     @GET("/api/transactions/home-page")
+    Call<TransactionHomeResponse> transaction(@Header("Authorization") String accessToken);
 
-    Call<TransactionHomeResponse>  getLimit(@Header("Authorization") String authorization,
-                                            @Query("access_token") String access_token);
+    @GET("/api/loan/products")
+    Call<LoanProductResponse> loanProduct(@Header("Authorization") String accessToken);
 
 }

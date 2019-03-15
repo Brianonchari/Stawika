@@ -6,6 +6,7 @@ import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -98,14 +99,13 @@ public class Registration2Activity extends AppCompatActivity {
                             Log.e("RESPONSE", new Gson().toJson(response.body()));
                             Constants.registrationDropdownResponse = response.body();
 
+
                             ArrayList<SpinnerArrayObject> spinnerArrayObjects = new ArrayList<>();
                             List<IncomeBand> incomeBands = response.body().getIncome();
                             for (IncomeBand level : incomeBands) {
                                 SpinnerArrayObject arrayObject = new SpinnerArrayObject();
                                 arrayObject.setId(level.getId());
                                 arrayObject.setName(String.valueOf(level.getLowerBand()) + "-" + (String.valueOf(level.getHigherBand())));
-//
-
                                 spinnerArrayObjects.add(arrayObject);
                             }
 
@@ -113,7 +113,7 @@ public class Registration2Activity extends AppCompatActivity {
                             averageIncome.setAdapter(customAdapter);
                         }
                         if (response.isSuccessful()) {
-                            Log.e("RESPONSE", new Gson().toJson(response.body()));
+
                             Constants.registrationDropdownResponse = response.body();
                             ArrayList<SpinnerArrayObject> spinnerArrayObjects = new ArrayList<>();
 

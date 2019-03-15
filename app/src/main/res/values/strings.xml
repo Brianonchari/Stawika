@@ -80,6 +80,10 @@
     <string name="top_up">Top UP</string>
     <string name="schedule">Please choose repayment shedule accepted to you</string>
     <string name="_21_days">21 DAYS</string>
+    <string name="cancel">CANCEL</string>
+    <string name="_30_days">30 DAYS</string>
+    <string name="enter_amount">Enter Amount</string>
+    <string name="enter_amount_in_multiple_of_100">Enter amount in multiple of 100</string>
 
 
 </resources>

@@ -94,7 +94,7 @@ public class LoginActivity extends AppCompatActivity implements DialogInterface.
 
                                 String token = (String) response.body().get("access_token");
 
-                                SharedPreferences preferences = LoginActivity.this.getSharedPreferences("com.example.brian.stawika.activities", Context.MODE_PRIVATE);
+                                SharedPreferences preferences = LoginActivity.this.getSharedPreferences("SharedPref", Context.MODE_PRIVATE);
                                 preferences.edit().putString("token", token).apply();
 
                                 Log.i("token", token);
