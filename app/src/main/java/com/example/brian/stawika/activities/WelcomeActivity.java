@@ -1,11 +1,9 @@
 package com.example.brian.stawika.activities;
 
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -14,21 +12,19 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Spinner;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.brian.stawika.R;
-import com.example.brian.stawika.adapters.RatesAdapter;
 import com.example.brian.stawika.api.RestApiInterface;
 import com.example.brian.stawika.api.RestClient;
-import com.example.brian.stawika.model.RatesArrayObject;
 import com.example.brian.stawika.model.response.LoanProductResponse;
 import com.example.brian.stawika.model.response.Product;
 import com.example.brian.stawika.model.response.TransactionHomeResponse;
-import com.example.brian.stawika.utils.Constants;
+import com.example.brian.stawika.model.response.WalletTransactions;
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -37,11 +33,14 @@ import retrofit2.Response;
 
 public class WelcomeActivity extends AppCompatActivity {
 
-    private Context context;
+
+
     private RestApiInterface apiService = RestClient.getClient().create(RestApiInterface.class);
     private TextView loanLimitTv, walletBalanceTv, twenyOnePercent, thirtyPercent;
-    private TextInputEditText enterAmountEt;
-    private Spinner productSpinner;
+
+    private String accessToken;
+    private Button cancelButton;
+    private List<Product> loanProductResponse;
 
     //inflate menu
     @Override
@@ -51,11 +50,9 @@ public class WelcomeActivity extends AppCompatActivity {
         return super.onCreateOptionsMenu(menu);
     }
 
-
     @Override
     public boolean onContextItemSelected(MenuItem item) {
         return super.onContextItemSelected(item);
-
     }
 
     @Override
@@ -63,32 +60,46 @@ public class WelcomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
 
-        productSpinner = findViewById(R.id.productSpinner);
-        SharedPreferences preferences = WelcomeActivity.this.getSharedPreferences("SharedPref", Context.MODE_PRIVATE);
-        final String accessToken = preferences.getString("token", "");
+        SharedPreferences preferences = this.getSharedPreferences("SharedPref", Context.MODE_PRIVATE);
+        accessToken = preferences.getString("token", "");
 
-        Log.e("Retrieved", accessToken);
+        cancelButton = findViewById(R.id.cancelButton);
+
+        findViewById(R.id.startLoanButton).setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                getLoanProducts();
+                Log.e(" <> ", "Button clicked");
+
+            }
+        });
+
 
         Call<TransactionHomeResponse> call = apiService.transaction("Bearer " + accessToken);
         call.enqueue(new Callback<TransactionHomeResponse>() {
             @Override
             public void onResponse(Call<TransactionHomeResponse> call, Response<TransactionHomeResponse> response) {
                 if (response.isSuccessful()) {
+                    Log.e("RESPONSE", new Gson().toJson(response.body()));
 
-                    Boolean chekLoan = response.body().isHasLoan();
-                    if(chekLoan==true){
 
-                    }else if(chekLoan ==false) {
-
-                        Log.e("RESPONSE", new Gson().toJson(response.body()));
+                    if (response.body() != null) ;
+                    boolean hasloan = response.body().isHasLoan();
+                    if (!hasloan) {
                         String loanLimit = String.valueOf(response.body().getLoanLimit());
                         String walletBalance = String.valueOf(response.body().getWalletBalance());
+                        List<WalletTransactions> walletTransactions = response.body().getWalletTransactions();
+
+
                         loanLimitTv = findViewById(R.id.loanLimitTv);
                         walletBalanceTv = findViewById(R.id.walletBalanceTv);
                         loanLimitTv.setText(loanLimit);
                         walletBalanceTv.setText(walletBalance);
-                    }
+                    } else {
 
+                    }
+//                    callApi();
                 }
             }
 
@@ -97,87 +108,82 @@ public class WelcomeActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    public void loadWallet(){
 
     }
 
+    private void getLoanProducts() {
+
+        Call<List<Product>> call = apiService.loanProduct("Bearer" + accessToken);
+
+        call.enqueue(new Callback<List<Product>>() {
+
+            @Override
+            public void onResponse(Call<List<Product>> call, Response<List<Product>> response) {
+
+                Log.e("LoanProductResponse >> ", String.valueOf(response.code()));
+
+                if (response.isSuccessful()) {
+
+                    Log.e("RESPONSE", new Gson().toJson(response.body()));
+                    LayoutInflater inflater = getLayoutInflater();
+                    View alertLayout = inflater.inflate(R.layout.customstartloan_layout, null);
+                    AlertDialog.Builder alert = new AlertDialog.Builder(WelcomeActivity.this);
+
+                    alert.setView(alertLayout);
+                    alert.setCancelable(false);
+                    final AlertDialog dialog = alert.create();
+                    dialog.show();
+
+//                    String products = null;
+//                    if (response.body() != null) {
+//                        products = response.body().get(0).getProduct();
+//
+//                    }
+                    String rate1 = response.body().get(0).getProduct();
+                    String rate2 = response.body().get(1).getProduct();
+
+                    twenyOnePercent = alertLayout.findViewById(R.id.twentyOnePercent);
+                    thirtyPercent = alertLayout.findViewById(R.id.thirtyPercent);
+                    twenyOnePercent.setText(rate1);
+                    thirtyPercent.setText(rate2);
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Product>> call, Throwable t) {
+
+                Log.e("LPR failure >> ", t.getMessage());
+
+            }
+        });
+
+    }
 
     public void profile(View view) {
         Intent intent = new Intent(WelcomeActivity.this, ProfileActivity.class);
         startActivity(intent);
     }
 
-    public void startLoanButton(View view){
-
-        callApi();
-
-        LayoutInflater inflater = getLayoutInflater();
-        View alertLayout = inflater.inflate(R.layout.customstartloan_layout, null);
-
-        AlertDialog.Builder alert = new AlertDialog.Builder(WelcomeActivity.this);
-        alert.setView(alertLayout);
-        alert.setCancelable(false);
-        alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                Log.e("Info", "Negative button clicked");
-            }
-        });
-        alert.setPositiveButton("Continue", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                //Toast.makeText(context, "Clicked", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        AlertDialog dialog = alert.create();
-        dialog.show();
+    public void loanDetails(View view) {
+        Intent intent = new Intent(this, LoanDetailsActivity.class);
+        startActivity(intent);
     }
 
-    public void  callApi(){
-
-        findViewById(R.id.startLoanButton).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                SharedPreferences preferences = WelcomeActivity.this.getSharedPreferences("SharedPref", Context.MODE_PRIVATE);
-                final String accessToken = preferences.getString("token", "");
-
-               // Log.e("Retrieved", accessToken);
-
-                Call<LoanProductResponse> call = apiService.loanProduct("Bearer" +accessToken);
-                call.enqueue(new Callback<LoanProductResponse>() {
-                    @Override
-                    public void onResponse(Call<LoanProductResponse> call, Response<LoanProductResponse> response) {
-                        if(response.isSuccessful()){
-                            Log.e("RESPONSE", new Gson().toJson(response.body()));
-                            Constants.loanProductResponse= response.body();
+    public  void dismissDialog(View view){
+        Intent intent = new Intent(this,WelcomeActivity.class);
+        startActivity(intent);
+    }
 
 
-                            ArrayList<RatesArrayObject> ratesArrayObjects = new ArrayList<>();
-                            List<Product> products = response.body().getProducts();
-                            for(Product level : products){
-                                RatesArrayObject arrayObject = new RatesArrayObject();
-                                arrayObject.setProductId(level.getProductId());
-                                arrayObject.setProduct(level.getProduct());
-                                ratesArrayObjects.add(arrayObject);
-                            }
-
-                            RatesAdapter adapter = new RatesAdapter(ratesArrayObjects,WelcomeActivity.this);
-                            productSpinner.setAdapter(adapter);
-
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(Call<LoanProductResponse> call, Throwable t) {
-
-                    }
-                });
-
-
-
-            }
-        });
+    public void updateUi() {
 
     }
+//    public void startLoan(View view ){
+//
+//    }
 }
 

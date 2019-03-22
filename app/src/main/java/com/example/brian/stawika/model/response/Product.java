@@ -1,6 +1,7 @@
 package com.example.brian.stawika.model.response;
 
 public class Product {
+
     private int productId;
     private String product;
 
@@ -8,7 +9,16 @@ public class Product {
         return productId;
     }
 
-    public String getProduct() {
+    public void setProductId(int productId) {
+        this.productId = productId;
+    }
+
+    public String getProduct()
+    {
         return product;
+    }
+
+    public void setProduct(String product) {
+        this.product = product;
     }
 }

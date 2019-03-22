@@ -80,11 +80,12 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
+                        android:onClick="startLoan"
                         android:background="@drawable/green_button_corner"
                         android:text="@string/startloan"
-                        android:onClick="startLoanButton"
                         android:padding="5dp"
                         android:textColor="@color/white" />
+
 
                 </LinearLayout>
             </LinearLayout>
@@ -172,6 +173,7 @@
                 android:text="@string/last_transactions" />
 
             <LinearLayout
+                android:id="@+id/linearLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/repaymentSchedule"
@@ -295,6 +297,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Profile"
+                    android:onClick="profile"
                     android:textColor="@color/white"
                     android:textSize="12sp" />
             </LinearLayout>

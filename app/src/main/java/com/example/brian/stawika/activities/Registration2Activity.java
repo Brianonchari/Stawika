@@ -30,6 +30,7 @@ import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
+import retrofit2.HttpException;
 import retrofit2.Response;
 
 
@@ -194,6 +195,14 @@ public class Registration2Activity extends AppCompatActivity {
                     public void onFailure(Call<RegistrationDropdownResponse> call, Throwable t) {
                         if(t instanceof IOException){
                             Toast.makeText(Registration2Activity.this, "Check your Internet Conectivity", Toast.LENGTH_SHORT).show();
+                            if(t instanceof HttpException){
+                                HttpException exception = (HttpException) t;
+                                switch (exception.code()){
+                                    case 500:
+                                        Toast.makeText(Registration2Activity.this, "Internal server Error" +
+                                                "Try again later", Toast.LENGTH_SHORT).show();
+                                }
+                            }
                         }
                     }
                 });

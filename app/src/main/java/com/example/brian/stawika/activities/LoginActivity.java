@@ -23,9 +23,9 @@ import java.io.IOException;
 import java.util.Map;
 
 import okhttp3.Credentials;
-import okhttp3.internal.http2.ErrorCode;
 import retrofit2.Call;
 import retrofit2.Callback;
+import retrofit2.HttpException;
 import retrofit2.Response;
 
 
@@ -59,7 +59,6 @@ public class LoginActivity extends AppCompatActivity implements DialogInterface.
 
                 if (phoneEt.getText() != null && phoneEt.getText().length() > 0)
                     phoneNumber = phoneEt.getText().toString().replace("|", "");
-                ;
 
                 if (pinEt.getText() != null && pinEt.getText().length() > 0)
                     password = pinEt.getText().toString();
@@ -100,7 +99,10 @@ public class LoginActivity extends AppCompatActivity implements DialogInterface.
 
                                 progress.dismiss();
 
-                                String token = (String) response.body().get("access_token");
+                                String token = null;
+                                if (response.body() != null) {
+                                    token = (String) response.body().get("access_token");
+                                }
 
                                 SharedPreferences preferences = LoginActivity.this.getSharedPreferences("SharedPref", Context.MODE_PRIVATE);
                                 preferences.edit().putString("token", token).apply();
@@ -127,11 +129,28 @@ public class LoginActivity extends AppCompatActivity implements DialogInterface.
 
                     @Override
                     public void onFailure(Call<Map<String, Object>> call, Throwable t) {
+
                         if (t instanceof IOException) {
                             progress.dismiss();
                             Toast.makeText(LoginActivity.this, "Network Error, " +
                                     "Check yout internet connection", Toast.LENGTH_LONG).show();
+                        }
+                        if (t instanceof HttpException) {
+                            HttpException exception = (HttpException) t;
+                            switch (exception.code()) {
+                                case 500:
+                                    Toast.makeText(LoginActivity.this, "Internal server Error," +
+                                            " Try again later", Toast.LENGTH_SHORT).show();
+                                    break;
 
+                                case 400:
+                                    Toast.makeText(LoginActivity.this, "Bad request", Toast.LENGTH_SHORT).show();
+                                    break;
+
+                                default:
+                                    break;
+
+                            }
                         }
 
                     }

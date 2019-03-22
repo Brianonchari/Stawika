@@ -5,12 +5,13 @@ import com.example.brian.stawika.model.request.CommonRequest;
 import com.example.brian.stawika.model.request.RegisterUserRequest;
 import com.example.brian.stawika.model.request.SmsVerificationRequest;
 import com.example.brian.stawika.model.response.AccountCheckResponse;
-import com.example.brian.stawika.model.response.LoanProductResponse;
+import com.example.brian.stawika.model.response.Product;
 import com.example.brian.stawika.model.response.RegisterUserResponse;
 import com.example.brian.stawika.model.response.RegistrationDropdownResponse;
 import com.example.brian.stawika.model.response.SmsVerificationResponse;
 import com.example.brian.stawika.model.response.TransactionHomeResponse;
 
+import java.util.List;
 import java.util.Map;
 
 import retrofit2.Call;
@@ -46,6 +47,6 @@ public interface RestApiInterface {
     Call<TransactionHomeResponse> transaction(@Header("Authorization") String accessToken);
 
     @GET("/api/loan/products")
-    Call<LoanProductResponse> loanProduct(@Header("Authorization") String accessToken);
+    Call<List<Product>> loanProduct(@Header("Authorization") String accessToken);
 
 }

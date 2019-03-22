@@ -76,14 +76,19 @@
     <string name="no_activity">NO ACTIVITY</string>
     <string name="noactivitydescription">Currently you have no transaction history. Start loan or top up your wallet balance</string>
     <string name="your_loan_limit">YOUR LOAN LIMIT</string>
-    <string name="startloan">START LOAN</string>
+    <string name="startloan">REQUEST LOAN</string>
     <string name="top_up">Top UP</string>
     <string name="schedule">Please choose repayment shedule accepted to you</string>
-    <string name="_21_days">21 DAYS</string>
-    <string name="cancel">CANCEL</string>
+    <string name="_21_days">21 DAYS</string>E
     <string name="_30_days">30 DAYS</string>
     <string name="enter_amount">Enter Amount</string>
     <string name="enter_amount_in_multiple_of_100">Enter amount in multiple of 100</string>
+    <string name="cancel">CANCEL</string>
+    <string name="descpription">DESCPRIPTION</string>
+    <string name="info">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, b ut also the leap into electronic typesetting, remaining essentially unchanged.</string>
+    <string name="loan_details">Loan Details</string>
+    <string name="june_7">June 7</string>
+    <string name="accept">ACCEPT</string>
 
 
 </resources>
